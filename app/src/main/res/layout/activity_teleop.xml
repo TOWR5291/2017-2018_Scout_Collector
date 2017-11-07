@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="club.towr5291.towr5291relicrecoveryscouting.TeleOpActivity">
+
+    <TextView
+        android:id="@+id/textView_team_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="8dp" />
+
+    <TextView
+        android:id="@+id/textView_match_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginEnd="8dp" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_match_number"
+        app:layout_constraintVertical_bias="0.0">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"><![CDATA[
+
+            android:layout_marginEnd="8dp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        ]]>
+
+            <TextView
+                android:id="@+id/teleop_glyph_count_static"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/teleop_glyph_count"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp" />
+
+            <Button
+                android:id="@+id/teleop_glyphs_down"
+                style="@style/Widget.AppCompat.Button.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:onClick="onTeleopGlyphsDownClicked"
+                android:text="-"
+                app:layout_constraintRight_toLeftOf="@+id/teleop_glyphs_display"
+                app:layout_constraintTop_toBottomOf="@+id/teleop_glyph_count_static"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/teleop_glyphs_display"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:text="TextView"
+                app:layout_constraintBaseline_toBaselineOf="@+id/teleop_glyphs_down"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp" />
+
+            <Button
+                android:id="@+id/teleop_glyphs_up"
+                style="@style/Widget.AppCompat.Button.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="9dp"
+                android:onClick="onTeleopGlyphsUpClicked"
+                android:text="+"
+                app:layout_constraintBaseline_toBaselineOf="@+id/teleop_glyphs_down"
+                app:layout_constraintLeft_toRightOf="@+id/teleop_glyphs_display"
+                android:layout_marginStart="9dp" />
+
+            <TextView
+                android:id="@+id/teleop_row_count_static"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/teleop_row_count"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/teleop_glyphs_down"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp" />
+
+            <Button
+                android:id="@+id/teleop_rows_down"
+                style="@style/Widget.AppCompat.Button.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:onClick="onTeleopRowsDownClicked"
+                android:text="-"
+                app:layout_constraintRight_toLeftOf="@+id/teleop_rows_display"
+                app:layout_constraintTop_toBottomOf="@+id/teleop_row_count_static"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/teleop_rows_display"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:text="TextView"
+                app:layout_constraintBaseline_toBaselineOf="@+id/teleop_rows_down"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp" />
+
+            <Button
+                android:id="@+id/teleop_rows_up"
+                style="@style/Widget.AppCompat.Button.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="9dp"
+                android:onClick="onTeleopRowsUpClicked"
+                android:text="+"
+                app:layout_constraintBaseline_toBaselineOf="@+id/teleop_rows_down"
+                app:layout_constraintLeft_toRightOf="@+id/teleop_rows_display"
+                android:layout_marginStart="9dp" />
+
+            <TextView
+                android:id="@+id/teleop_columns_count_static"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:text="@string/teleop_column_count"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/teleop_rows_down"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp" />
+
+            <Button
+                android:id="@+id/teleop_columns_down"
+                style="@style/Widget.AppCompat.Button.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="7dp"
+                android:onClick="onTeleopColumnsDownClicked"
+                android:text="-"
+                app:layout_constraintRight_toLeftOf="@+id/teleop_columns_display"
+                app:layout_constraintTop_toBottomOf="@+id/teleop_columns_count_static"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/teleop_columns_display"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:text="TextView"
+                app:layout_constraintBaseline_toBaselineOf="@+id/teleop_columns_down"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp" />
+
+            <Button
+                android:id="@+id/teleop_columns_up"
+                style="@style/Widget.AppCompat.Button.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:onClick="onTeleopColumnsUpClicked"
+                android:text="+"
+                app:layout_constraintBaseline_toBaselineOf="@+id/teleop_columns_down"
+                app:layout_constraintLeft_toRightOf="@+id/teleop_columns_display"
+                android:layout_marginStart="8dp" />
+
+            <CheckBox
+                android:id="@+id/teleop_cipher1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="0dp"
+                android:text="@string/teleop_cipher_1"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/teleop_columns_down" />
+
+            <CheckBox
+                android:id="@+id/teleop_cipher2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/teleop_cipher_2"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/teleop_cipher1" />
+
+            <Spinner
+                android:id="@+id/teleop_relic1_zone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/relic_zones"
+                app:layout_constraintRight_toRightOf="@+id/teleop_relic1_static"
+                app:layout_constraintLeft_toLeftOf="@+id/teleop_relic1_static"
+                app:layout_constraintHorizontal_bias="0.5"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/teleop_relic1_static" />
+
+            <TextView
+                android:id="@+id/teleop_relic1_static"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:text="Relic 1"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintHorizontal_bias="0.251"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/teleop_relic_header_static"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/teleop_relic_header_static"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/relic"
+                android:layout_marginRight="8dp"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginLeft="8dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/teleop_cipher2"
+                app:layout_constraintHorizontal_bias="0.504" />
+
+            <TextView
+                android:id="@+id/teleop_relic2_static"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Relic 2"
+                app:layout_constraintHorizontal_bias="0.75"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/teleop_relic_header_static"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp" />
+
+            <Spinner
+                android:id="@+id/teleop_relic2_zone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="0dp"
+                android:entries="@array/relic_zones"
+                app:layout_constraintRight_toRightOf="@+id/teleop_relic2_static"
+                android:layout_marginTop="7dp"
+                app:layout_constraintTop_toBottomOf="@+id/teleop_relic2_static"
+                android:layout_marginLeft="0dp"
+                app:layout_constraintLeft_toLeftOf="@+id/teleop_relic2_static"
+                app:layout_constraintHorizontal_bias="0.5" />
+
+            <CheckBox
+                android:id="@+id/teleop_relic1_standing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/standing_relic"
+                app:layout_constraintLeft_toLeftOf="@+id/teleop_relic1_zone"
+                app:layout_constraintRight_toRightOf="@+id/teleop_relic1_zone"
+                app:layout_constraintTop_toBottomOf="@+id/teleop_relic1_zone"
+                app:layout_constraintHorizontal_bias="0.5" />
+
+            <CheckBox
+                android:id="@+id/teleop_relic2_standing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/standing_relic"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintLeft_toLeftOf="@+id/teleop_relic2_zone"
+                app:layout_constraintRight_toRightOf="@+id/teleop_relic2_zone"
+                app:layout_constraintTop_toBottomOf="@+id/teleop_relic2_zone" />
+
+            <CheckBox
+                android:id="@+id/teleop_balanced"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/finish_balanced"
+                app:layout_constraintTop_toBottomOf="@+id/teleop_relic1_standing"
+                android:layout_marginLeft="8dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginRight="8dp"
+                app:layout_constraintRight_toRightOf="parent" />
+
+            <Button
+                android:id="@+id/teleop_goto_comments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="32dp"
+                android:onClick="gotoComments"
+                android:text="@string/select_comments"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/teleop_balanced" />
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

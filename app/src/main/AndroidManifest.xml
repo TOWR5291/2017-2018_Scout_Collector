@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="club.towr5291.towr5291relicrecoveryscouting">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".PreMatchActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".AutonomousActivity"
+            android:parentActivityName=".PreMatchActivity">
+
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".PreMatchActivity" />
+        </activity>
+        <activity
+            android:name=".TeleOpActivity"
+            android:parentActivityName=".AutonomousActivity">
+
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".AutonomousActivity" />
+        </activity>
+        <!-- <activity android:name=".StartupActivity"></activity> -->
+        <activity android:name=".FinalizeActivity"></activity>
+        <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
+    </application>
+
+</manifest>
