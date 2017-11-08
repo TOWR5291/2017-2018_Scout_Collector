@@ -26,7 +26,7 @@ public class FinalizeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_finalize);
 
         Intent intent = getIntent();
-        match_number = intent.getStringExtra("match_number");
+	match_number = intent.getStringExtra("match_number");
         team_number = intent.getStringExtra("team_number");
 
         old_data_array0 = intent.getStringArrayExtra("array");
