@@ -52,7 +52,7 @@
 
     <string name="finish_balanced">Robot is Balanced at end of Match</string>
 
-    <string name="finish">Finish and Save</string>
+    <string name="finish">Save &amp; Reset</string>
 
     <string name="autonomous">AUTONOMOUS</string>
     <string name="teleop">TELEOP</string>

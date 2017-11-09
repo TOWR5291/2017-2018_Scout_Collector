@@ -38,8 +38,8 @@ public class PreMatchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prematch);
 
-        TextView normally_invisible_debug_output = (TextView) findViewById(R.id.normally_invisible_data_output);
-        normally_invisible_debug_output.setText(String.valueOf(getFilesDir()));
+//        TextView normally_invisible_debug_output = (TextView) findViewById(R.id.normally_invisible_data_output);
+//        normally_invisible_debug_output.setText(String.valueOf(getFilesDir()));
 
 //        Intent intent = getIntent();
 //        scout = getIntent().getStringExtra("scout_name");

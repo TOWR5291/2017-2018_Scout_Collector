@@ -10,6 +10,12 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+	int autonomousGlyphs = 0;
+
+	int teleopGlyphs = 0;
+	int teleopRows = 0;
+	int teleopColumns = 0;
+
 	// The Declaration of Things
 
 	EditText prematch_input_scout_name;
@@ -59,6 +65,12 @@ public class MainActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+		prematch_input_scout_name = (EditText) findViewById(R.id.prematch_input_scout_name);
+		prematch_select_scout_team = (Spinner) findViewById(R.id.prematch_select_scout_team);
+
+		prematch_select_team = (Spinner) findViewById(R.id.prematch_select_team);
+		prematch_input_match = (EditText) findViewById(R.id.prematch_input_match);
+
 		autonomous_balanced_checkbox = (CheckBox) findViewById(R.id.autonomous_robot_balanced);
 
 		autonomous_glyphs_up = (Button) findViewById(R.id.autonomous_glyphs_up);
@@ -86,11 +98,30 @@ public class MainActivity extends AppCompatActivity {
 		teleop_cipher1 = (CheckBox) findViewById(R.id.teleop_cipher1);
 		teleop_cipher2 = (CheckBox) findViewById(R.id.teleop_cipher2);
 
+		teleop_relic1_select_zone = (Spinner) findViewById(R.id.teleop_relic1_zone);
+		teleop_relic2_select_zone = (Spinner) findViewById(R.id.teleop_relic2_zone);
+
 		teleop_relic1_standing = (CheckBox) findViewById(R.id.teleop_relic1_standing);
 		teleop_relic2_standing = (CheckBox) findViewById(R.id.teleop_relic2_standing);
 
 		teleop_balanced = (CheckBox) findViewById(R.id.teleop_balanced);
 
 
+	}
+
+	public void enableDisableAutonomous (Boolean enabled) {
+		autonomous_glyphs_up.setEnabled(enabled);
+		autonomous_glyphs_down.setEnabled(enabled);
+		autonomous_own_jewel.setEnabled(enabled);
+		autonomous_other_jewel.setEnabled(enabled);
+		autonomous_key_bonus.setEnabled(enabled);
+		autonomous_safe_zone.setEnabled(enabled);
+
+		autonomousGlyphs = 0;
+		autonomous_glyphs_display.setText(String.valueOf(autonomousGlyphs));
+		autonomous_key_bonus.setChecked(false);
+		autonomous_own_jewel.setChecked(false);
+		autonomous_other_jewel.setChecked(false);
+		autonomous_safe_zone.setChecked(false);
 	}
 }

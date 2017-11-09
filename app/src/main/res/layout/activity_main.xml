@@ -9,7 +9,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="495dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="0dp"
@@ -28,10 +28,8 @@
                 android:id="@+id/prematch_layout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
                 android:visibility="visible"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -52,8 +50,7 @@
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/prematch_scout_data_static"
-                    />
+                    app:layout_constraintTop_toBottomOf="@+id/prematch_scout_data_static" />
 
                 <TextView
                     android:id="@+id/prematch_select_team_static"
@@ -64,7 +61,7 @@
                     android:text="@string/select_team"
                     app:layout_constraintBaseline_toBaselineOf="@+id/prematch_select_team"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    tools:text="@string/select_team"/>
+                    tools:text="@string/select_team" />
 
                 <Spinner
                     android:id="@+id/prematch_select_scout_team"
@@ -75,7 +72,7 @@
                     android:layout_marginTop="8dp"
                     android:entries="@array/select_your_team"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/prematch_input_scout_name"/>
+                    app:layout_constraintTop_toBottomOf="@+id/prematch_input_scout_name" />
 
                 <TextView
                     android:id="@+id/prematch_team_data_static"
@@ -92,7 +89,7 @@
                     android:textStyle="bold"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/prematch_select_scout_team"/>
+                    app:layout_constraintTop_toBottomOf="@+id/prematch_select_scout_team" />
 
                 <EditText
                     android:id="@+id/prematch_input_match"
@@ -106,7 +103,7 @@
                     android:inputType="number"
                     android:maxLength="2"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/prematch_select_team"/>
+                    app:layout_constraintTop_toBottomOf="@+id/prematch_select_team" />
 
                 <Spinner
                     android:id="@+id/prematch_select_team"
@@ -117,17 +114,17 @@
                     android:layout_marginTop="8dp"
                     android:entries="@array/select_team_name_number"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/prematch_team_data_static"/>
+                    app:layout_constraintTop_toBottomOf="@+id/prematch_team_data_static" />
 
                 <TextView
-                    android:id="@+id/prematch-select_scout_team_static"
+                    android:id="@+id/prematch_select_scout_team_static"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_marginStart="8dp"
                     android:text="@string/select_scout_team_hint"
                     app:layout_constraintBaseline_toBaselineOf="@+id/prematch_select_scout_team"
-                    app:layout_constraintLeft_toLeftOf="parent"/>
+                    app:layout_constraintLeft_toLeftOf="parent" />
 
                 <TextView
                     android:id="@+id/prematch_scout_data_static"
@@ -143,7 +140,7 @@
                     android:textStyle="bold"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/prematch_input_match_static"
@@ -154,17 +151,17 @@
                     android:text="@string/start_match_select_textview"
                     app:layout_constraintBaseline_toBaselineOf="@+id/prematch_input_match"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    tools:text="@string/start_match_select_textview"/>
+                    tools:text="@string/start_match_select_textview" />
 
 
             </android.support.constraint.ConstraintLayout>
 
             <android.support.constraint.ConstraintLayout
                 android:id="@+id/autonomous_layout"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginLeft="0dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="32dp"
@@ -314,11 +311,11 @@
 
             <android.support.constraint.ConstraintLayout
                 android:id="@+id/teleop_layout"
-                android:layout_width="377dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
                 android:layout_marginStart="8dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -611,11 +608,11 @@
 
             <android.support.constraint.ConstraintLayout
                 android:id="@+id/finalize_layout"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
                 android:layout_marginStart="8dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -648,11 +645,49 @@
             </android.support.constraint.ConstraintLayout>
 
             <android.support.constraint.ConstraintLayout
+                android:id="@+id/footer_layout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                tools:layout_editor_absoluteX="112dp"
-                tools:layout_editor_absoluteY="1059dp">
+                android:layout_marginTop="16dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/finalize_layout">
 
+                <Button
+                    android:id="@+id/footer_switch_autonomous"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:text="@string/switch_autonomous" />
+
+                <Button
+                    android:id="@+id/footer_switch_teleop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:text="@string/switch_teleop" />
+
+                <Button
+                    android:id="@+id/footer_switch_comments"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:text="@string/switch_comments" />
+
+                <Button
+                    android:id="@+id/footer_save_reset"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:text="@string/finish" />
             </android.support.constraint.ConstraintLayout>
 
         </android.support.constraint.ConstraintLayout>
