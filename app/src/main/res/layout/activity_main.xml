@@ -8,16 +8,17 @@
     tools:context="club.towr5291.towr5291relicrecoveryscouting.MainActivity">
 
     <ScrollView
-        android:layout_width="395dp"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginStart="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="495dp"
         android:layout_marginEnd="8dp"
-        app:layout_constraintHorizontal_bias="0.0">
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="0dp">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -27,12 +28,14 @@
                 android:id="@+id/prematch_layout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
                 android:visibility="visible"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp">
+                app:layout_constraintTop_toTopOf="parent">
 
                 <EditText
                     android:id="@+id/prematch_input_scout_name"
@@ -68,7 +71,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="6dp"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginRight="8dp"
                     android:layout_marginTop="8dp"
                     android:entries="@array/select_your_team"
                     app:layout_constraintRight_toRightOf="parent"
@@ -93,7 +96,7 @@
 
                 <EditText
                     android:id="@+id/prematch_input_match"
-                    android:layout_width="0dp"
+                    android:layout_width="31dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
                     android:layout_marginRight="16dp"
@@ -146,15 +149,11 @@
                     android:id="@+id/prematch_input_match_static"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
                     android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
                     android:layout_marginStart="16dp"
                     android:text="@string/start_match_select_textview"
                     app:layout_constraintBaseline_toBaselineOf="@+id/prematch_input_match"
-                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toLeftOf="@+id/prematch_input_match"
                     tools:text="@string/start_match_select_textview"/>
 
 
@@ -162,16 +161,31 @@
 
             <android.support.constraint.ConstraintLayout
                 android:id="@+id/autonomous_layout"
-                android:layout_width="379dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/prematch_layout"
-                android:layout_marginTop="32dp"
+                android:layout_marginEnd="8dp"
                 android:layout_marginLeft="8dp"
-                app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_marginRight="8dp"
-                app:layout_constraintRight_toRightOf="parent"
                 android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp">
+                android:layout_marginTop="32dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/prematch_layout"
+                app:layout_constraintHorizontal_bias="0.0">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/autonomous"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
 
                 <Button
                     android:id="@+id/autonomous_glyphs_up"
@@ -192,12 +206,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
-                    android:layout_marginTop="8dp"
                     android:onClick="onAutonomousBalancedClicked"
                     android:text="@string/autonomous_balanced"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@+id/textView"/>
                 android:layout_marginEnd="8dp" />
 
                 <TextView
@@ -236,7 +250,6 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
                     android:text="@string/own_jewel"
-                    app:layout_constraintHorizontal_bias="0.497"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/autonomous_robot_balanced"/>
@@ -303,13 +316,13 @@
                 android:id="@+id/teleop_layout"
                 android:layout_width="377dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/autonomous_layout"
+                android:layout_marginEnd="8dp"
                 android:layout_marginLeft="8dp"
-                app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_marginRight="8dp"
-                app:layout_constraintRight_toRightOf="parent"
                 android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp">
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/autonomous_layout">
 
                 <TextView
                     android:id="@+id/teleop_row_count_static"
@@ -600,14 +613,14 @@
                 android:id="@+id/finalize_layout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/teleop_layout"
-                tools:layout_width="match_parent"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp">
+                tools:layout_width="match_parent">
 
                 <EditText
                     android:id="@+id/finalize_comment"
@@ -637,8 +650,8 @@
             <android.support.constraint.ConstraintLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                tools:layout_editor_absoluteX="96dp"
-                tools:layout_editor_absoluteY="899dp">
+                tools:layout_editor_absoluteX="112dp"
+                tools:layout_editor_absoluteY="1059dp">
 
             </android.support.constraint.ConstraintLayout>
 

@@ -53,15 +53,15 @@ public class AutonomousActivity extends AppCompatActivity {
     }
 
 //    CheckBox autonomous_balanced_checkbox = (CheckBox) findViewById(R.id.autonomous_robot_balanced);
-
+//
 //    Button autonomous_glyphs_up = (Button) findViewById(R.id.autonomous_glyphs_up);
 //    Button autonomous_glyphs_down = (Button) findViewById(R.id.autonomous_glyphs_down);
 //    TextView autonomous_glyphs_display = (TextView) findViewById(R.id.autonomous_glyphs_display);
 //    CheckBox autonomous_key_bonus = (CheckBox) findViewById(R.id.autonomous_key_bonus);
-
+//
 //    CheckBox autonomous_own_jewel = (CheckBox) findViewById(R.id.autonomous_own_jewel);
 //    CheckBox autonomous_other_jewel = (CheckBox) findViewById(R.id.autonomous_other_jewel);
-
+//
 //    CheckBox autonomous_safe_zone = (CheckBox) findViewById(R.id.autonomous_safe_zone);
 
     public void onAutonomousBalancedClicked(View view) {

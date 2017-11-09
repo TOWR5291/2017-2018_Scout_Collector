@@ -54,4 +54,12 @@
 
     <string name="finish">Finish and Save</string>
 
+    <string name="autonomous">AUTONOMOUS</string>
+    <string name="teleop">TELEOP</string>
+    <string name="comments">COMMENTS</string>
+
+    <string name="switch_autonomous">SWITCH TO AUTONOMOUS</string>
+    <string name="switch_teleop">SWITCH TO TELEOP</string>
+    <string name="switch_comments">SWITCH TO COMMENTS</string>
+
 </resources>
