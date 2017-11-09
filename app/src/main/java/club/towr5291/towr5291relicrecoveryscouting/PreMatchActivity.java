@@ -11,8 +11,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 
 /**
  * Created by Andrew on 10/25/2017.
@@ -66,7 +64,7 @@ public class PreMatchActivity extends AppCompatActivity {
     public void gotoAutonomous(View view) {
         // Do something in response to button
 
-        spinner_select_team = (Spinner)findViewById(R.id.spinner_select_team);
+        spinner_select_team = (Spinner)findViewById(R.id.prematch_select_team);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 this, android.R.layout.simple_spinner_item, team_array);
 
@@ -76,7 +74,7 @@ public class PreMatchActivity extends AppCompatActivity {
         message_team_number = team_array[Integer.valueOf(spinner_position)];
         // Text Box
         Intent intent = new Intent(this, AutonomousActivity.class);
-        EditText editText_input_match = (EditText) findViewById(R.id.editText_input_match);
+        EditText editText_input_match = (EditText) findViewById(R.id.prematch_input_match);
         String message_match_number = editText_input_match.getText().toString();
 //        if(editText_input_match.getText().toString() == "") {
 //            message_match_number = "0";

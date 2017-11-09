@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="club.towr5291.towr5291relicrecoveryscouting">
+          package="club.towr5291.towr5291relicrecoveryscouting">
 
     <application
         android:allowBackup="true"
@@ -9,12 +9,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PreMatchActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <activity android:name=".PreMatchActivity"
+            android:parentActivityName=".MainActivity">
+
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
         </activity>
         <activity
             android:name=".AutonomousActivity"
@@ -23,7 +31,7 @@
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".PreMatchActivity" />
+                android:value=".PreMatchActivity"/>
         </activity>
         <activity
             android:name=".TeleOpActivity"
@@ -32,11 +40,15 @@
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".AutonomousActivity" />
+                android:value=".AutonomousActivity"/>
         </activity>
         <!-- <activity android:name=".StartupActivity"></activity> -->
-        <activity android:name=".FinalizeActivity"></activity>
-        <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
+        <activity android:name=".FinalizeActivity"/>
+
+        <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE"/>
+
+        <activity android:name=".MainActivity">
+        </activity>
     </application>
 
 </manifest>
