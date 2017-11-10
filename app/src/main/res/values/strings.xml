@@ -25,12 +25,20 @@
         <item>Uranus</item>
         <item>Neptune</item>
     </string-array>
-    <string name="autonomous_balanced">Robot is Balanced at Start of Autonomous</string>
-    <string name="own_jewel">Own Alliance\'s Jewel Moved</string>
-    <string name="other_jewel">Opposing Alliance\'s Jewel Moved</string>
-    <string name="autonomous_glyphs">Glyphs Scored in Cryptobox During Autonomous</string>
-    <string name="autonomous_key_bonus">1st Glyph put in Correct Column (Do not check if unsure)</string>
-    <string name="autonomous_safe_zone">Robot Parked in Safe Zone</string>
+    <string name="autonomous_balanced">Robot is Balanced</string>
+
+    <string name="autonomous_jewel_header">JEWELS</string>
+    <string name="autonomous_own_jewel">OWN ALLIANCE\'s JEWEL MOVED</string>
+    <string name="autonomous_other_jewel">OTHER ALLAINCE\'s JEWEL MOVED</string>
+
+    <string name="cryptobox_header">CRYPTOBOX</string>
+    <string name="glyphs">GLYPHS</string>
+    <string name="rows">ROWS</string>
+    <string name="columns">COLUMNS</string>
+    <string name="relics">RELICS</string>
+    <string name="ciphers">CIPHERS</string>
+    <string name="autonomous_key_bonus">KEY BONUSES</string>
+    <string name="autonomous_safe_zone">PARKED IN SAFE ZONE</string>
 
     <string name="teleop_glyph_count">Glyphs Scored in Cryptobox during TeleOp</string>
     <string name="teleop_row_count">Cryptobox Rows Completed</string>
@@ -47,6 +55,14 @@
         <item>Zone 2</item>
         <item>Zone 3</item>
     </string-array>
+
+    <string name="not_scored">UNSCORED</string>
+    <string name="zone1">ZONE 1</string>
+    <string name="zone2">ZONE 2</string>
+    <string name="zone3">ZONE 3</string>
+    <string name="standing">STANDING</string>
+
+    <string name="teleop_balanced">ROBOT IS BALANCED AT END</string>
 
     <string name="standing_relic">Relic is Standing</string>
 
