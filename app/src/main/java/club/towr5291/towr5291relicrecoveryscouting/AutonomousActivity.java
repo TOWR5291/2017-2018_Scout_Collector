@@ -103,8 +103,8 @@ public class AutonomousActivity extends AppCompatActivity {
 
         CheckBox autonomous_key_bonus = (CheckBox) findViewById(R.id.autonomous_key_bonus);
 
-        CheckBox autonomous_own_jewel = (CheckBox) findViewById(R.id.autonomous_own_jewel);
-        CheckBox autonomous_other_jewel = (CheckBox) findViewById(R.id.autonomous_other_jewel);
+        CheckBox autonomous_own_jewel = (CheckBox) findViewById(R.id.autonomous_red_jewel);
+        CheckBox autonomous_other_jewel = (CheckBox) findViewById(R.id.autonomous_blue_jewel);
 
         CheckBox autonomous_safe_zone = (CheckBox) findViewById(R.id.autonomous_safe_zone);
 
@@ -127,8 +127,8 @@ public class AutonomousActivity extends AppCompatActivity {
         Button autonomous_glyphs_up = (Button) findViewById(R.id.autonomous_glyphs_up);
         Button autonomous_glyphs_down = (Button) findViewById(R.id.autonomous_glyphs_down);
         CheckBox autonomous_key_bonus = (CheckBox) findViewById(R.id.autonomous_key_bonus);
-        CheckBox autonomous_own_jewel = (CheckBox) findViewById(R.id.autonomous_own_jewel);
-        CheckBox autonomous_other_jewel = (CheckBox) findViewById(R.id.autonomous_other_jewel);
+        CheckBox autonomous_own_jewel = (CheckBox) findViewById(R.id.autonomous_red_jewel);
+        CheckBox autonomous_other_jewel = (CheckBox) findViewById(R.id.autonomous_blue_jewel);
         TextView autonomous_glyphs_display = (TextView) findViewById(R.id.autonomous_glyphs_display);
         CheckBox autonomous_safe_zone = (CheckBox) findViewById(R.id.autonomous_safe_zone);
 

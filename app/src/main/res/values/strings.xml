@@ -15,6 +15,12 @@
     <string name="select_teleop">Go to Teleop</string>
     <string name="select_comments">Comment &amp; Finalize</string>
     <string name="select_team">Select Team:</string>
+    <string name="select_alliance">Select Alliance:</string>
+    <string-array name="select_alliance">
+        <item>Select Alliance</item>
+        <item>Red</item>
+        <item>Blue</item>
+    </string-array>
     <string-array name="select_team_name_number">
         <item>5291 - TOWR</item>
         <item>11230 - Elektrakatz</item>
@@ -27,9 +33,11 @@
     </string-array>
     <string name="autonomous_balanced">Robot is Balanced</string>
 
-    <string name="autonomous_jewel_header">JEWELS</string>
-    <string name="autonomous_own_jewel">OWN ALLIANCE\'s JEWEL MOVED</string>
-    <string name="autonomous_other_jewel">OTHER ALLAINCE\'s JEWEL MOVED</string>
+    <string name="autonomous_jewel_header">JEWELS MOVED</string>
+    <string name="autonomous_own_jewel">OWN</string>
+    <string name="autonomous_other_jewel">OTHER</string>
+    <string name="autonomous_red_jewel">RED</string>
+    <string name="autonomous_blue_jewel">BLUE</string>
 
     <string name="cryptobox_header">CRYPTOBOX</string>
     <string name="glyphs">GLYPHS</string>
@@ -62,7 +70,7 @@
     <string name="zone3">ZONE 3</string>
     <string name="standing">STANDING</string>
 
-    <string name="teleop_balanced">ROBOT IS BALANCED AT END</string>
+    <string name="teleop_balanced">ROBOT BALANCED</string>
 
     <string name="standing_relic">Relic is Standing</string>
 

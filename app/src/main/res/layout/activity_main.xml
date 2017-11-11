@@ -36,38 +36,43 @@
                     android:id="@+id/prematch_scout_data_static"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:text="SCOUT DATA:"
                     android:textSize="24sp"
                     android:textStyle="bold"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"/>
 
                 <EditText
                     android:id="@+id/prematch_input_scout_name"
-                    android:layout_width="match_parent"
+                    android:layout_width="328dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:ems="10"
                     android:hint="@string/input_scout_hint"
                     android:inputType="textPersonName"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/prematch_scout_data_static" />
+                    app:layout_constraintTop_toBottomOf="@+id/prematch_scout_data_static"
+                    android:layout_marginRight="8dp"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:layout_marginLeft="8dp"
+                    app:layout_constraintLeft_toLeftOf="parent"/>
 
                 <TextView
                     android:id="@+id/prematch_select_scout_team_static"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
                     android:text="@string/select_scout_team_hint"
                     app:layout_constraintBaseline_toBaselineOf="@+id/prematch_select_scout_team"
-                    app:layout_constraintLeft_toLeftOf="parent" />
+                    app:layout_constraintLeft_toLeftOf="parent"/>
 
                 <Spinner
                     android:id="@+id/prematch_select_scout_team"
@@ -78,7 +83,7 @@
                     android:layout_marginTop="8dp"
                     android:entries="@array/select_your_team"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/prematch_input_scout_name" />
+                    app:layout_constraintTop_toBottomOf="@+id/prematch_input_scout_name"/>
 
                 <TextView
                     android:id="@+id/prematch_team_data_static"
@@ -95,53 +100,75 @@
                     android:textStyle="bold"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/prematch_select_scout_team" />
+                    app:layout_constraintTop_toBottomOf="@+id/prematch_select_scout_team"/>
 
                 <TextView
                     android:id="@+id/prematch_select_team_static"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
                     android:text="@string/select_team"
                     app:layout_constraintBaseline_toBaselineOf="@+id/prematch_select_team"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    tools:text="@string/select_team" />
+                    tools:text="@string/select_team"/>
 
                 <Spinner
                     android:id="@+id/prematch_select_team"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="6dp"
-                    android:layout_marginRight="6dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
                     android:layout_marginTop="8dp"
                     android:entries="@array/select_team_name_number"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/prematch_team_data_static" />
+                    app:layout_constraintTop_toBottomOf="@+id/prematch_team_data_static"/>
 
                 <TextView
                     android:id="@+id/prematch_input_match_static"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
                     android:text="@string/start_match_select_textview"
                     app:layout_constraintBaseline_toBaselineOf="@+id/prematch_input_match"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    tools:text="@string/start_match_select_textview" />
+                    tools:text="@string/start_match_select_textview"/>
 
                 <EditText
                     android:id="@+id/prematch_input_match"
-                    android:layout_width="31dp"
+                    android:layout_width="1dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="8dp"
                     android:ems="10"
                     android:hint="@string/start_hint_text_1"
                     android:inputType="number"
                     android:maxLength="2"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/prematch_select_team" />
+                    app:layout_constraintTop_toBottomOf="@+id/prematch_select_team"/>
 
+                <TextView
+                    android:id="@+id/prematch_select_alliance_static"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/select_alliance"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/prematch_select_alliance"
+                    app:layout_constraintLeft_toLeftOf="parent"/>
+
+                <Spinner
+                    android:id="@+id/prematch_select_alliance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="8dp"
+                    android:entries="@array/select_alliance"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/prematch_input_match"/>
 
             </android.support.constraint.ConstraintLayout>
 
@@ -149,7 +176,7 @@
                 android:id="@+id/autonomous_layout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
+                android:visibility="visible"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -169,7 +196,7 @@
                     android:textStyle="bold"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"/>
 
                 <TextView
                     android:id="@+id/autonomous_jewel_header_static"
@@ -185,37 +212,44 @@
                     android:textStyle="bold"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/autonomous_robot_balanced" />
+                    app:layout_constraintTop_toBottomOf="@+id/autonomous_robot_balanced"/>
 
                 <Button
                     android:id="@+id/autonomous_robot_balanced"
-                    android:layout_width="88dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="@string/autonomous_balanced"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/autonomous_header_static" />
+                    app:layout_constraintTop_toBottomOf="@+id/autonomous_header_static"
+                    android:layout_marginLeft="8dp"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"/>
 
                 <Button
-                    android:id="@+id/autonomous_own_jewel"
-                    android:layout_width="160dp"
+                    android:id="@+id/autonomous_red_jewel"
+                    android:layout_width="140dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:text="@string/autonomous_own_jewel"
+                    android:text="@string/autonomous_red_jewel"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/autonomous_jewel_header_static" />
+                    app:layout_constraintTop_toBottomOf="@+id/autonomous_jewel_header_static"/>
 
                 <Button
-                    android:id="@+id/autonomous_other_jewel"
-                    android:layout_width="160dp"
+                    android:id="@+id/autonomous_blue_jewel"
+                    android:layout_width="140dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="8dp"
-                    android:text="@string/autonomous_other_jewel"
+                    android:text="@string/autonomous_blue_jewel"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/autonomous_jewel_header_static" />
+                    app:layout_constraintTop_toBottomOf="@+id/autonomous_jewel_header_static"/>
 
                 <TextView
                     android:id="@+id/autonomous_glyphs_static"
@@ -231,7 +265,7 @@
                     android:textStyle="bold"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/autonomous_other_jewel" />
+                    app:layout_constraintTop_toBottomOf="@+id/autonomous_blue_jewel"/>
 
                 <Button
                     android:id="@+id/autonomous_glyphs"
@@ -245,7 +279,7 @@
                     android:text="@string/glyphs"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/autonomous_glyphs_static" />
+                    app:layout_constraintTop_toBottomOf="@+id/autonomous_glyphs_static"/>
 
                 <Button
                     android:id="@+id/autonomous_key_bonus"
@@ -259,7 +293,7 @@
                     android:text="@string/autonomous_key_bonus"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/autonomous_glyphs" />
+                    app:layout_constraintTop_toBottomOf="@+id/autonomous_glyphs"/>
 
                 <Button
                     android:id="@+id/autonomous_safe_zone"
@@ -273,7 +307,7 @@
                     android:text="@string/autonomous_safe_zone"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/autonomous_key_bonus" />
+                    app:layout_constraintTop_toBottomOf="@+id/autonomous_key_bonus"/>
 
             </android.support.constraint.ConstraintLayout>
 
@@ -281,8 +315,6 @@
                 android:id="@+id/teleop_layout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
                 android:visibility="gone"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -306,7 +338,7 @@
 
                 <Button
                     android:id="@+id/teleop_glyphs"
-                    android:layout_width="100dp"
+                    android:layout_width="88dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_marginStart="8dp"
@@ -317,27 +349,27 @@
 
                 <Button
                     android:id="@+id/teleop_rows"
-                    android:layout_width="100dp"
+                    android:layout_width="88dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginStart="8dp"
                     android:text="@string/rows"
                     app:layout_constraintBaseline_toBaselineOf="@+id/teleop_glyphs"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_editor_absoluteX="0dp"/>
 
                 <Button
                     android:id="@+id/teleop_columns"
-                    android:layout_width="100dp"
+                    android:layout_width="88dp"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="8dp"
                     android:text="@string/columns"
                     app:layout_constraintBaseline_toBaselineOf="@+id/teleop_glyphs"
-                    app:layout_constraintRight_toRightOf="parent" />
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:layout_marginEnd="8dp"/>
 
                 <Button
                     android:id="@+id/teleop_ciphers"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
@@ -345,7 +377,9 @@
                     android:text="@string/ciphers"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/teleop_columns" />
+                    app:layout_constraintTop_toBottomOf="@+id/teleop_columns"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"/>
 
                 <TextView
                     android:id="@+id/teleop_relic_header_static"
@@ -360,11 +394,13 @@
                     app:layout_constraintHorizontal_bias="0.502"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/teleop_ciphers" />
+                    app:layout_constraintTop_toBottomOf="@+id/teleop_ciphers"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"/>
 
                 <Button
                     android:id="@+id/teleop_relic1_unscored"
-                    android:layout_width="100dp"
+                    android:layout_width="88dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
@@ -373,11 +409,13 @@
                     app:layout_constraintHorizontal_bias="0.1"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/teleop_relic_header_static" />
+                    app:layout_constraintTop_toBottomOf="@+id/teleop_relic_header_static"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"/>
 
                 <Button
                     android:id="@+id/teleop_relic1_zone1"
-                    android:layout_width="100dp"
+                    android:layout_width="88dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
@@ -386,11 +424,13 @@
                     app:layout_constraintHorizontal_bias="0.1"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/teleop_relic1_unscored" />
+                    app:layout_constraintTop_toBottomOf="@+id/teleop_relic1_unscored"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"/>
 
                 <Button
                     android:id="@+id/teleop_relic1_zone2"
-                    android:layout_width="100dp"
+                    android:layout_width="88dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
@@ -399,11 +439,13 @@
                     app:layout_constraintHorizontal_bias="0.1"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/teleop_relic1_zone1" />
+                    app:layout_constraintTop_toBottomOf="@+id/teleop_relic1_zone1"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"/>
 
                 <Button
                     android:id="@+id/teleop_relic1_zone3"
-                    android:layout_width="100dp"
+                    android:layout_width="88dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
@@ -412,11 +454,13 @@
                     app:layout_constraintHorizontal_bias="0.1"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/teleop_relic1_zone2" />
+                    app:layout_constraintTop_toBottomOf="@+id/teleop_relic1_zone2"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"/>
 
                 <Button
                     android:id="@+id/teleop_relic1_standing"
-                    android:layout_width="100dp"
+                    android:layout_width="88dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
@@ -425,11 +469,13 @@
                     app:layout_constraintHorizontal_bias="0.1"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/teleop_relic1_zone3" />
+                    app:layout_constraintTop_toBottomOf="@+id/teleop_relic1_zone3"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"/>
 
                 <Button
                     android:id="@+id/teleop_relic2_unscored"
-                    android:layout_width="100dp"
+                    android:layout_width="88dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
@@ -438,11 +484,13 @@
                     app:layout_constraintHorizontal_bias="0.9"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/teleop_relic_header_static" />
+                    app:layout_constraintTop_toBottomOf="@+id/teleop_relic_header_static"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"/>
 
                 <Button
                     android:id="@+id/teleop_relic2_zone1"
-                    android:layout_width="100dp"
+                    android:layout_width="88dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
@@ -451,11 +499,13 @@
                     app:layout_constraintHorizontal_bias="0.9"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/teleop_relic2_unscored" />
+                    app:layout_constraintTop_toBottomOf="@+id/teleop_relic2_unscored"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"/>
 
                 <Button
                     android:id="@+id/teleop_relic2_zone2"
-                    android:layout_width="100dp"
+                    android:layout_width="88dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
@@ -464,11 +514,13 @@
                     app:layout_constraintHorizontal_bias="0.9"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/teleop_relic2_zone1" />
+                    app:layout_constraintTop_toBottomOf="@+id/teleop_relic2_zone1"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"/>
 
                 <Button
                     android:id="@+id/teleop_relic2_zone3"
-                    android:layout_width="100dp"
+                    android:layout_width="88dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
@@ -477,11 +529,13 @@
                     app:layout_constraintHorizontal_bias="0.9"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/teleop_relic2_zone2" />
+                    app:layout_constraintTop_toBottomOf="@+id/teleop_relic2_zone2"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"/>
 
                 <Button
                     android:id="@+id/teleop_relic2_standing"
-                    android:layout_width="100dp"
+                    android:layout_width="88dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
@@ -490,11 +544,13 @@
                     app:layout_constraintHorizontal_bias="0.9"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/teleop_relic2_zone3" />
+                    app:layout_constraintTop_toBottomOf="@+id/teleop_relic2_zone3"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"/>
 
                 <Button
                     android:id="@+id/teleop_balanced"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
@@ -502,7 +558,9 @@
                     android:text="@string/teleop_balanced"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/teleop_relic1_standing" />
+                    app:layout_constraintTop_toBottomOf="@+id/teleop_relic1_standing"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"/>
 
             </android.support.constraint.ConstraintLayout>
 
@@ -510,10 +568,6 @@
                 android:id="@+id/finalize_layout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
                 android:visibility="gone"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -538,8 +592,8 @@
                 <android.support.constraint.ConstraintLayout
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    tools:layout_editor_absoluteX="8dp"
-                    tools:layout_editor_absoluteY="8dp">
+                    tools:layout_editor_absoluteX="0dp"
+                    tools:layout_editor_absoluteY="0dp">
 
                 </android.support.constraint.ConstraintLayout>
 
@@ -549,7 +603,6 @@
                 android:id="@+id/footer_layout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:visibility="gone"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"

@@ -1,26 +1,42 @@
 package club.towr5291.towr5291relicrecoveryscouting;
 
-import android.graphics.Color;
+import android.Manifest;
+import android.content.Context;
+import android.content.pm.PackageManager;
 import android.support.constraint.ConstraintLayout;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
+import android.widget.Toast;
 
-import static android.R.color.holo_green_light;
+import java.io.File;
+import java.io.FileWriter;
+import java.text.SimpleDateFormat;
+import java.util.Collections;
+import java.util.Date;
+
+import static java.security.AccessController.getContext;
+
+//import static java.security.AccessController.getContext;
 
 public class MainActivity extends AppCompatActivity {
 
+	int team_number = 0;
+	String team_name = "";
+	int match_number = 0;
+
+
 	boolean autonomousBalanced = false;
 
-	boolean autonomousOwnJewel = false;
-	boolean autonomousOtherJewel = false;
+	boolean autonomousRedJewel = false;
+	boolean autonomousBlueJewel = false;
 
 	int autonomousGlyphs = 0;
 	int autonomousKeys = 0;
@@ -55,11 +71,12 @@ public class MainActivity extends AppCompatActivity {
 
 	Spinner prematch_select_team;
 	EditText prematch_input_match;
+	Spinner prematch_select_alliance;
 
 	Button autonomous_balanced;
 
-	Button autonomous_own_jewel;
-	Button autonomous_other_jewel;
+	Button autonomous_red_jewel;
+	Button autonomous_blue_jewel;
 
 	Button autonomous_glyphs;
 	Button autonomous_key_bonus;
@@ -71,13 +88,13 @@ public class MainActivity extends AppCompatActivity {
 	Button teleop_columns;
 	Button teleop_ciphers;
 
-	Button teleop_relic1_unscored;
+	Button teleop_relic1_unscoRed;
 	Button teleop_relic1_zone1;
 	Button teleop_relic1_zone2;
 	Button teleop_relic1_zone3;
 	Button teleop_relic1_standing;
 
-	Button teleop_relic2_unscored;
+	Button teleop_relic2_unscoRed;
 	Button teleop_relic2_zone1;
 	Button teleop_relic2_zone2;
 	Button teleop_relic2_zone3;
@@ -90,6 +107,8 @@ public class MainActivity extends AppCompatActivity {
 	Button footer_switch_comments;
 
 	Button footer_save_reset;
+
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -104,14 +123,15 @@ public class MainActivity extends AppCompatActivity {
 
 		prematch_input_scout_name = (EditText) findViewById(R.id.prematch_input_scout_name);
 		prematch_select_scout_team = (Spinner) findViewById(R.id.prematch_select_scout_team);
+		prematch_select_alliance = (Spinner) findViewById(R.id.prematch_select_alliance);
 
 		prematch_select_team = (Spinner) findViewById(R.id.prematch_select_team);
 		prematch_input_match = (EditText) findViewById(R.id.prematch_input_match);
 
 		autonomous_balanced = (Button) findViewById(R.id.autonomous_robot_balanced);
 
-		autonomous_own_jewel = (Button) findViewById(R.id.autonomous_own_jewel);
-		autonomous_other_jewel = (Button) findViewById(R.id.autonomous_other_jewel);
+		autonomous_red_jewel = (Button) findViewById(R.id.autonomous_red_jewel);
+		autonomous_blue_jewel = (Button) findViewById(R.id.autonomous_blue_jewel);
 
 		autonomous_glyphs = (Button) findViewById(R.id.autonomous_glyphs);
 		autonomous_key_bonus = (Button) findViewById(R.id.autonomous_key_bonus);
@@ -123,13 +143,13 @@ public class MainActivity extends AppCompatActivity {
 		teleop_columns = (Button) findViewById(R.id.teleop_columns);
 		teleop_ciphers = (Button) findViewById(R.id.teleop_ciphers);
 
-		teleop_relic1_unscored = (Button) findViewById(R.id.teleop_relic1_unscored);
+		teleop_relic1_unscoRed = (Button) findViewById(R.id.teleop_relic1_unscored);
 		teleop_relic1_zone1 = (Button) findViewById(R.id.teleop_relic1_zone1);
 		teleop_relic1_zone2 = (Button) findViewById(R.id.teleop_relic1_zone2);
 		teleop_relic1_zone3 = (Button) findViewById(R.id.teleop_relic1_zone3);
 		teleop_relic1_standing = (Button) findViewById(R.id.teleop_relic1_standing);
 
-		teleop_relic2_unscored = (Button) findViewById(R.id.teleop_relic2_unscored);
+		teleop_relic2_unscoRed = (Button) findViewById(R.id.teleop_relic2_unscored);
 		teleop_relic2_zone1 = (Button) findViewById(R.id.teleop_relic2_zone1);
 		teleop_relic2_zone2 = (Button) findViewById(R.id.teleop_relic2_zone2);
 		teleop_relic2_zone3 = (Button) findViewById(R.id.teleop_relic2_zone3);
@@ -150,6 +170,14 @@ public class MainActivity extends AppCompatActivity {
 		setScreen(0);
 
 		enableDisableAutonomous(false);
+
+		DisplayMetrics displayMetrics = new DisplayMetrics();
+		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+		int height = displayMetrics.heightPixels;
+		int width = displayMetrics.widthPixels;
+
+		autonomous_red_jewel.setWidth(31);
+		autonomous_blue_jewel.setWidth(width/2);
 
 		// Setting long & short click listeners
 
@@ -176,42 +204,42 @@ public class MainActivity extends AppCompatActivity {
 			}
 		});
 
-		autonomous_own_jewel.setOnClickListener(new View.OnClickListener() {
+		autonomous_red_jewel.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				if (!autonomousOwnJewel) {
-					autonomousOwnJewel = true;
+				if (!autonomousRedJewel) {
+					autonomousRedJewel = true;
 					updateButtons();
 				}
 			}
 		});
 
-		autonomous_own_jewel.setOnLongClickListener(new View.OnLongClickListener() {
+		autonomous_red_jewel.setOnLongClickListener(new View.OnLongClickListener() {
 			@Override
 			public boolean onLongClick(View v) {
-				if (autonomousOwnJewel) {
-					autonomousOwnJewel = false;
+				if (autonomousRedJewel) {
+					autonomousRedJewel = false;
 				}
 				updateButtons();
 				return true;
 			}
 		});
 
-		autonomous_other_jewel.setOnClickListener(new View.OnClickListener() {
+		autonomous_blue_jewel.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				if (!autonomousOtherJewel) {
-					autonomousOtherJewel = true;
+				if (!autonomousBlueJewel) {
+					autonomousBlueJewel = true;
 					updateButtons();
 				}
 			}
 		});
 
-		autonomous_other_jewel.setOnLongClickListener(new View.OnLongClickListener() {
+		autonomous_blue_jewel.setOnLongClickListener(new View.OnLongClickListener() {
 			@Override
 			public boolean onLongClick(View v) {
-				if (autonomousOtherJewel) {
-					autonomousOtherJewel = false;
+				if (autonomousBlueJewel) {
+					autonomousBlueJewel = false;
 				}
 				updateButtons();
 				return true;
@@ -363,7 +391,7 @@ public class MainActivity extends AppCompatActivity {
 			}
 		});
 
-		teleop_relic1_unscored.setOnClickListener(new View.OnClickListener() {
+		teleop_relic1_unscoRed.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
 				relic1Zone = 0;
@@ -395,7 +423,7 @@ public class MainActivity extends AppCompatActivity {
 			}
 		});
 
-		teleop_relic2_unscored.setOnClickListener(new View.OnClickListener() {
+		teleop_relic2_unscoRed.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
 				relic2Zone = 0;
@@ -451,8 +479,8 @@ public class MainActivity extends AppCompatActivity {
 		teleop_relic2_standing.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				if (!autonomousSafeZone) {
-					autonomousSafeZone = true;
+				if (!relic2Standing) {
+					relic2Standing = true;
 					updateButtons();
 				}
 			}
@@ -491,7 +519,81 @@ public class MainActivity extends AppCompatActivity {
 		});
 	}
 
+	public void onSave (View view) {
+		// take current data & put into static variables for saveToCSV to work, since I don't feel like modifying it.
 
+		int team_number = 0;
+		String team_name = "";
+		int match_number = 0;
+
+
+		boolean autonomousBalanced = false;
+
+		boolean autonomousRedJewel = false;
+		boolean autonomousBlueJewel = false;
+
+		int autonomousGlyphs = 0;
+		int autonomousKeys = 0;
+
+		boolean autonomousSafeZone = false;
+
+		int teleopGlyphs = 0;
+		int teleopRows = 0;
+		int teleopColumns = 0;
+		int teleopCiphers = 0;
+
+		int relic1Zone = 0;
+		boolean relic1Standing = false;
+
+		int relic2Zone = 0;
+		boolean relic2Standing = false;
+
+		boolean teleopBalanced = false;
+	}
+
+	private void saveToCSV(File directoryParent, MatchDataDatabaseHelper /*matchDataDatabaseHelper*/) {
+		String dateTime = new SimpleDateFormat("yy-MM-dd").format(new Date());
+		File csvMatches = new File(directoryParent, dateTime + "-matches.csv");
+		File csvComments = new File(directoryParent, dateTime + "-comments.csv");
+		try {
+			if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+				boolean makeMatches = false;
+				boolean makeComments = false;
+				if (!csvMatches.isFile()) {
+					makeMatches = true;
+					if (!csvMatches.createNewFile()) {
+						return;
+					}
+				}
+				if (!csvComments.isFile()) {
+					makeComments = true;
+					if (!csvComments.createNewFile()) {
+						return;
+					}
+				}
+				FileWriter csvMatchesWriter = new FileWriter(csvMatches, true);
+				FileWriter csvCommentsWriter = new FileWriter(csvComments, true);
+				if (makeMatches)
+					csvMatchesWriter.write("match" + match_number + "team" + team_number);
+				if (makeComments)
+					csvCommentsWriter.write("match" + match_number + "team" + team_number);
+				csvMatchesWriter.write(i.serializeDataCSV());
+				csvCommentsWriter.write(i.serializeCommentsCSV());
+//				Log.i(TAG, "Wrote logs! " + csvMatches.getAbsolutePath());
+				Toast.makeText(getApplicationContext(), "Created CSVs!", Toast.LENGTH_SHORT);
+				csvMatchesWriter.close();
+				csvCommentsWriter.close();
+			} else {
+				if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+//					Log.w(TAG, "Permission failed for file writing.");
+				} else {
+					ActivityCompat.requestPermissions(getContext(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+				}
+			}
+		} catch (Exception e) {
+//			Log.w(TAG, e);
+		}
+	}
 
 
 	public void switchToAutonomous (View view) {
@@ -510,8 +612,8 @@ public class MainActivity extends AppCompatActivity {
 
 		setButtonColor(autonomous_balanced, autonomousBalanced);
 
-		setButtonColor(autonomous_own_jewel, autonomousOwnJewel);
-		setButtonColor(autonomous_other_jewel, autonomousOtherJewel);
+		setButtonColor(autonomous_red_jewel, autonomousRedJewel);
+		setButtonColor(autonomous_blue_jewel, autonomousBlueJewel);
 
 		if (autonomousGlyphs != 0) {
 			setButtonColor(autonomous_glyphs, true);
@@ -563,19 +665,19 @@ public class MainActivity extends AppCompatActivity {
 			teleop_ciphers.setText(getResources().getText(R.string.ciphers) + "\n0");
 		}
 
-		Button[] relics1 = {teleop_relic1_unscored, teleop_relic1_zone1, teleop_relic1_zone2, teleop_relic1_zone3};
+		Button[] relics1 = {teleop_relic1_unscoRed, teleop_relic1_zone1, teleop_relic1_zone2, teleop_relic1_zone3};
 
-		for (int i = 0; i <= relic1Zone; i++) {
-			setButtonColor(relics1[i], true);
-		}
-
-		for (int i = 3; i > relic1Zone; i--) {
-			setButtonColor(relics1[i], false);
+		for (int i = 0; i < 4; i++) {
+			if (i == relic1Zone) {
+				setButtonColor(relics1[i], true);
+			} else {
+				setButtonColor(relics1[i], false);
+			}
 		}
 
 		setButtonColor(teleop_relic1_standing, relic1Standing);
 
-		Button[] relics2 = {teleop_relic2_unscored, teleop_relic2_zone1, teleop_relic2_zone2, teleop_relic2_zone3};
+		Button[] relics2 = {teleop_relic2_unscoRed, teleop_relic2_zone1, teleop_relic2_zone2, teleop_relic2_zone3};
 
 		for (int i = 0; i < 4; i++) {
 			if (i == relic2Zone) {
@@ -599,14 +701,14 @@ public class MainActivity extends AppCompatActivity {
 	}
 
 	public void enableDisableAutonomous (Boolean enabled) {
-		autonomous_own_jewel.setEnabled(enabled);
-		autonomous_other_jewel.setEnabled(enabled);
+		autonomous_red_jewel.setEnabled(enabled);
+		autonomous_blue_jewel.setEnabled(enabled);
 		autonomous_glyphs.setEnabled(enabled);
 		autonomous_key_bonus.setEnabled(enabled);
 		autonomous_safe_zone.setEnabled(enabled);
 
-		autonomousOwnJewel = false;
-		autonomousOtherJewel = false;
+		autonomousRedJewel = false;
+		autonomousBlueJewel = false;
 		autonomousGlyphs = 0;
 		autonomousKeys = 0;
 		autonomousSafeZone = false;
