@@ -27,7 +27,7 @@
                 android:id="@+id/prematch_layout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:visibility="visible"
+                android:visibility="gone"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -52,17 +52,17 @@
                     android:id="@+id/prematch_input_scout_name"
                     android:layout_width="328dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
                     android:layout_marginTop="8dp"
                     android:ems="10"
                     android:hint="@string/input_scout_hint"
                     android:inputType="textPersonName"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/prematch_scout_data_static"
-                    android:layout_marginRight="8dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    android:layout_marginLeft="8dp"
-                    app:layout_constraintLeft_toLeftOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/prematch_scout_data_static"/>
 
                 <TextView
                     android:id="@+id/prematch_select_scout_team_static"
@@ -120,7 +120,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="8dp"
-                    android:entries="@array/select_team_name_number"
+                    android:entries="@array/team_name_number"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/prematch_team_data_static"/>
 
@@ -137,7 +137,7 @@
 
                 <EditText
                     android:id="@+id/prematch_input_match"
-                    android:layout_width="1dp"
+                    android:layout_width="31dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
@@ -176,7 +176,7 @@
                 android:id="@+id/autonomous_layout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:visibility="visible"
+                android:visibility="gone"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -218,16 +218,16 @@
                     android:id="@+id/autonomous_robot_balanced"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/autonomous_balanced"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/autonomous_header_static"
+                    android:layout_marginEnd="8dp"
                     android:layout_marginLeft="8dp"
-                    app:layout_constraintHorizontal_bias="0.0"
                     android:layout_marginRight="8dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"/>
+                    android:layout_marginTop="8dp"
+                    android:text="@string/autonomous_balanced"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/autonomous_header_static"/>
 
                 <Button
                     android:id="@+id/autonomous_red_jewel"
@@ -603,7 +603,7 @@
                 android:id="@+id/footer_layout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
+                android:visibility="visible"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/finalize_layout">
@@ -645,6 +645,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
+                    android:onClick="onSave"
                     android:text="@string/finish"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"

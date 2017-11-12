@@ -1,6 +1,8 @@
 package club.towr5291.towr5291relicrecoveryscouting;
 
 import android.Manifest;
+import android.app.Activity;
+import android.app.VoiceInteractor;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.support.constraint.ConstraintLayout;
@@ -11,6 +13,7 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -18,9 +21,28 @@ import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.lang.ref.WeakReference;
 import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Date;
+
+import android.Manifest;
+import android.app.Activity;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.os.Environment;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.util.Log;
+import android.widget.Toast;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Collections;
+import java.util.Date;
+import java.util.Objects;
 
 import static java.security.AccessController.getContext;
 
@@ -28,15 +50,26 @@ import static java.security.AccessController.getContext;
 
 public class MainActivity extends AppCompatActivity {
 
+	//TORC stuff that i don't understand
+
+	public static WeakReference<MainActivity> instance;
+
+
 	int team_number = 0;
 	String team_name = "";
 	int match_number = 0;
-
+	String scout = "";
+	int scout_team = 0;
+	boolean isRed = false;
+	String comment = "";
 
 	boolean autonomousBalanced = false;
 
 	boolean autonomousRedJewel = false;
 	boolean autonomousBlueJewel = false;
+
+	boolean ownJewel = false;
+	boolean otherJewel = false;
 
 	int autonomousGlyphs = 0;
 	int autonomousKeys = 0;
@@ -53,6 +86,11 @@ public class MainActivity extends AppCompatActivity {
 
 	int relic2Zone = 0;
 	boolean relic2Standing = false;
+
+	int zone1s = 0;
+	int zone2s = 0;
+	int zone3s = 0;
+	int standings = 0;
 
 	boolean teleopBalanced = false;
 
@@ -102,6 +140,8 @@ public class MainActivity extends AppCompatActivity {
 
 	Button teleop_balanced;
 
+	EditText finalize_comment;
+
 	Button footer_switch_autonomous;
 	Button footer_switch_teleop;
 	Button footer_switch_comments;
@@ -115,6 +155,12 @@ public class MainActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+		getSupportActionBar().setTitle("TOWR5291 2017 Scouting"); // set the top title
+
+		//TORC stuff that I will never understand
+		instance = new WeakReference<>(this);
+
+		//Get references to buttons & layouts & whatnot
 		prematch_layout = (ConstraintLayout) findViewById(R.id.prematch_layout);
 		autonomous_layout = (ConstraintLayout) findViewById(R.id.autonomous_layout);
 		teleop_layout = (ConstraintLayout) findViewById(R.id.teleop_layout);
@@ -156,6 +202,8 @@ public class MainActivity extends AppCompatActivity {
 		teleop_relic2_standing = (Button) findViewById(R.id.teleop_relic2_standing);
 
 		teleop_balanced = (Button) findViewById(R.id.teleop_balanced);
+
+		finalize_comment = (EditText) findViewById(R.id.finalize_comment);
 
 		footer_switch_autonomous = (Button) findViewById(R.id.footer_switch_autonomous);
 		footer_switch_teleop = (Button) findViewById(R.id.footer_switch_teleop);
@@ -520,81 +568,227 @@ public class MainActivity extends AppCompatActivity {
 	}
 
 	public void onSave (View view) {
-		// take current data & put into static variables for saveToCSV to work, since I don't feel like modifying it.
+		Toast.makeText(getApplicationContext(), "Toast", Toast.LENGTH_SHORT);
+		int[] team_number_array = getResources().getIntArray(R.array.team_numbers);
+		String[] team_name_array = getResources().getStringArray(R.array.team_names);
+
+		match_number = Integer.valueOf(prematch_input_match.getText().toString());
+//		ArrayAdapter<String> adapterTeam = new ArrayAdapter<String>(
+//				this, android.R.layout.simple_spinner_item, getResources().getString(R.array.team_numbers));
+		int spinner_position_team = prematch_select_team.getSelectedItemPosition();
+
+		team_number = team_number_array[spinner_position_team];
+		team_name = team_name_array[spinner_position_team];
+
+		int ownJewel = 0;
+		int otherJewel = 0;
+
+		if (isRed) {
+			if (autonomousRedJewel) {
+				ownJewel = 1;
+			} else {
+				ownJewel = 0;
+			}
+			if (autonomousBlueJewel) {
+				otherJewel = 1;
+			} else {
+				otherJewel = 0;
+			}
+		}
+
+		if (!isRed) {
+			if(autonomousBlueJewel) {
+				ownJewel = 1;
+			} else {
+				ownJewel = 0;
+			}
+			if (autonomousRedJewel) {
+				otherJewel = 1;
+			} else {
+				otherJewel = 0;
+			}
+		}
+
+
+		if (relic1Zone > 1) {zone1s++;}
+		if (relic1Zone > 2) {zone2s++;}
+		if (relic1Zone > 3) {zone3s++;}
+		if (relic1Standing) {standings++;}
+
+		if (relic2Zone > 1) {zone1s++;}
+		if (relic2Zone > 2) {zone2s++;}
+		if (relic2Zone > 3) {zone3s++;}
+		if (relic2Standing) {standings++;}
 
 		int team_number = 0;
 		String team_name = "";
 		int match_number = 0;
+		String scout = "";
+		int scout_team = 0;
+		boolean isRed = false;
+		String comment = "";
+		comment = finalize_comment.getText().toString();
+
+		String[] data_array = {toString(match_number), toString(team_number), team_name, scout, toString(scout_team), toString(autonomousBalanced), toString(ownJewel), toString(otherJewel), toString(autonomousGlyphs), toString(autonomousKeys), toString(autonomousSafeZone), toString(teleopGlyphs), toString(teleopRows), toString(teleopColumns), toString(teleopCiphers), toString(zone1s), toString(zone2s), toString(zone2s), toString(standings), toString(teleopBalanced), "", comment};
+		Toast.makeText(getApplicationContext(), "Toast1", Toast.LENGTH_SHORT);
+		saveFile(getStoragePath(), data_array);
 
 
-		boolean autonomousBalanced = false;
 
-		boolean autonomousRedJewel = false;
-		boolean autonomousBlueJewel = false;
 
-		int autonomousGlyphs = 0;
-		int autonomousKeys = 0;
-
-		boolean autonomousSafeZone = false;
-
-		int teleopGlyphs = 0;
-		int teleopRows = 0;
-		int teleopColumns = 0;
-		int teleopCiphers = 0;
-
-		int relic1Zone = 0;
-		boolean relic1Standing = false;
-
-		int relic2Zone = 0;
-		boolean relic2Standing = false;
-
-		boolean teleopBalanced = false;
+//		saveToCSV(getFilesDir() , data_array);
+//		saveFile(getFilesDir(), data_array);
 	}
 
-	private void saveToCSV(File directoryParent, MatchDataDatabaseHelper /*matchDataDatabaseHelper*/) {
-		String dateTime = new SimpleDateFormat("yy-MM-dd").format(new Date());
-		File csvMatches = new File(directoryParent, dateTime + "-matches.csv");
-		File csvComments = new File(directoryParent, dateTime + "-comments.csv");
+	public File getStoragePath() {
+		return Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS);
+	}
+
+	public String toString (boolean variable) {
+		if (variable) {
+			return "1";
+		} else {
+			return "0";
+		}
+	}
+
+	public String toString (int variable) {
+		return String.valueOf(variable);
+	}
+
+	public int toInt (boolean variable) {
+		if (variable) {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
+
+	private static Activity getContext() throws NullPointerException {
+//		if (DebugActivity.instance == null) {
+//			if (MainActivity.instance == null) {
+//				throw new NullPointerException("Neither DebugActivity nor MainActivity has an instance!");
+//			} else {
+//				return MainActivity.instance.get();
+//			}
+//		} else {
+//			return DebugActivity.instance.get();
+//		}
+		return MainActivity.instance.get();
+	}
+
+	public void saveFile(File path, String[] data_array) {
+//		File matchFile = new File(path, "match" + data_array[0] + "team" + data_array[1] + ".csv");
+		File matchFile = new File(path, "scout.csv");
+		Toast.makeText(getApplicationContext(), "Toast2", Toast.LENGTH_SHORT);
+		if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+//		FileWriter matchesWriter = new FileWriter(matchFile, false);
 		try {
-			if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-				boolean makeMatches = false;
-				boolean makeComments = false;
-				if (!csvMatches.isFile()) {
-					makeMatches = true;
-					if (!csvMatches.createNewFile()) {
-						return;
-					}
-				}
-				if (!csvComments.isFile()) {
-					makeComments = true;
-					if (!csvComments.createNewFile()) {
-						return;
-					}
-				}
-				FileWriter csvMatchesWriter = new FileWriter(csvMatches, true);
-				FileWriter csvCommentsWriter = new FileWriter(csvComments, true);
-				if (makeMatches)
-					csvMatchesWriter.write("match" + match_number + "team" + team_number);
-				if (makeComments)
-					csvCommentsWriter.write("match" + match_number + "team" + team_number);
-				csvMatchesWriter.write(i.serializeDataCSV());
-				csvCommentsWriter.write(i.serializeCommentsCSV());
-//				Log.i(TAG, "Wrote logs! " + csvMatches.getAbsolutePath());
-				Toast.makeText(getApplicationContext(), "Created CSVs!", Toast.LENGTH_SHORT);
-				csvMatchesWriter.close();
-				csvCommentsWriter.close();
-			} else {
-				if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+			Toast.makeText(getApplicationContext(), "tried", Toast.LENGTH_SHORT);
+			FileWriter matchesWriter = new FileWriter(matchFile, false);
+			matchFile.createNewFile();
+			matchesWriter.write(serializeData(zone1s, zone2s, zone3s, standings));
+			matchesWriter.close();
+
+
+		} catch (Exception e) {
+			Toast.makeText(getApplicationContext(), "Caught error thing", Toast.LENGTH_SHORT);
+		}
+		} else {
+			Toast.makeText(getApplicationContext(), "Went to else", Toast.LENGTH_SHORT);
+				if (ActivityCompat.shouldShowRequestPermissionRationale(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
 //					Log.w(TAG, "Permission failed for file writing.");
 				} else {
 					ActivityCompat.requestPermissions(getContext(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
 				}
 			}
-		} catch (Exception e) {
-//			Log.w(TAG, e);
-		}
 	}
 
+	private static final String COMMA = ",";
+	public String serializeData(int zone1s, int zone2s, int zone3s, int standings) {
+		return    match_number + COMMA
+				+ team_number + COMMA
+				+ team_name + COMMA
+				+ scout + COMMA
+				+ scout_team + COMMA
+				+ toString(autonomousBalanced) + COMMA
+				+ toString(ownJewel) + COMMA
+				+ toString(otherJewel) + COMMA
+				+ toString(autonomousGlyphs) + COMMA
+				+ toString(autonomousKeys) + COMMA
+				+ toString(autonomousSafeZone) + COMMA
+				+ toString(teleopGlyphs) + COMMA
+				+ toString(teleopRows) + COMMA
+				+ toString(teleopColumns) + COMMA
+				+ toString(teleopCiphers) + COMMA
+				+ toString(zone1s) + COMMA
+				+ toString(zone2s) + COMMA
+				+ toString(zone3s) + COMMA
+				+ toString(standings) + COMMA
+				+ toString(teleopBalanced) + COMMA
+				+ "" + COMMA
+				+ comment
+		;
+	}
+
+//	private void saveToCSV(File directoryParent, String[] data_array) {
+//		String dateTime = new SimpleDateFormat("yy-MM-dd").format(new Date());
+//		File csvMatches = new File(directoryParent, dateTime + "-matches.csv");
+////		File csvComments = new File(directoryParent, dateTime + "-comments.csv");
+//		try {
+//			if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+//				boolean makeMatches = false;
+//				boolean makeComments = true;
+//				if (!csvMatches.isFile()) {
+//					makeMatches = true;
+//					if (!csvMatches.createNewFile()) {
+//						return;
+//					}
+//				}
+////				if (!csvComments.isFile()) {
+////					makeComments = true;
+////					if (!csvComments.createNewFile()) {
+////						return;
+////					}
+////				}
+//				FileWriter csvMatchesWriter = new FileWriter(csvMatches, true);
+////				FileWriter csvCommentsWriter = new FileWriter(csvComments, true);
+////				if (makeMatches)
+//				csvMatchesWriter.write("match" + match_number + "team" + team_number);
+////				if (makeComments)
+////					csvCommentsWriter.write("match" + match_number + "team" + team_number);
+//				for (MatchData i : Collections.list(data_array)) {
+//					csvMatchesWriter.write(i.serializeDataCSV());
+//					csvCommentsWriter.write(i.serializeCommentsCSV());
+//				}
+////				csvCommentsWriter.write(i.serializeCommentsCSV());
+////				Log.i(TAG, "Wrote logs! " + csvMatches.getAbsolutePath());
+//				Toast.makeText(getContext(), "Created CSVs!", Toast.LENGTH_SHORT);
+//				csvMatchesWriter.close();
+////				csvCommentsWriter.close();
+//
+//
+//
+//
+//			} else {
+//				if (ActivityCompat.shouldShowRequestPermissionRationale(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+////					Log.w(TAG, "Permission failed for file writing.");
+//				} else {
+//					ActivityCompat.requestPermissions(getContext(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+//				}
+//			}
+//		} catch (Exception e) {
+////			Log.w(TAG, e);
+//		}
+//	}
+
+	private static String[] push(String[] array, String push) {
+		String[] longer = new String[array.length + 1];
+		for (int i = 0; i < array.length; i++)
+			longer[i] = array[i];
+		longer[array.length] = push;
+		return longer;
+	}
 
 	public void switchToAutonomous (View view) {
 		setScreen(0);

@@ -1,11 +1,7 @@
 <resources>
     <string name="input_scout_hint">Input YOUR Name</string>
     <string name="select_scout_team_hint">Select YOUR team:</string>
-    <string-array name="select_your_team">
-        <item>5291 - TOWR</item>
-        <item>11230 - Elektrakatz</item>
-        <item>11231 - Cyborg Cats</item>
-    </string-array>
+
     <string name="proceed_prematch">Proceed to Scouting</string>
 
     <string name="app_name">TOWR 5291 Relic Recovery Scouting</string>
@@ -14,23 +10,14 @@
     <string name="select_autonomous">Go to Autonomous</string>
     <string name="select_teleop">Go to Teleop</string>
     <string name="select_comments">Comment &amp; Finalize</string>
-    <string name="select_team">Select Team:</string>
+    <string name="select_team">Team:</string>
     <string name="select_alliance">Select Alliance:</string>
     <string-array name="select_alliance">
         <item>Select Alliance</item>
         <item>Red</item>
         <item>Blue</item>
     </string-array>
-    <string-array name="select_team_name_number">
-        <item>5291 - TOWR</item>
-        <item>11230 - Elektrakatz</item>
-        <item>11231 - Cyborg Cats</item>
-        <item>Mars</item>
-        <item>Jupiter</item>
-        <item>Saturn</item>
-        <item>Uranus</item>
-        <item>Neptune</item>
-    </string-array>
+
     <string name="autonomous_balanced">Robot is Balanced</string>
 
     <string name="autonomous_jewel_header">JEWELS MOVED</string>
@@ -85,5 +72,127 @@
     <string name="switch_autonomous">SWITCH TO AUTONOMOUS</string>
     <string name="switch_teleop">SWITCH TO TELEOP</string>
     <string name="switch_comments">SWITCH TO COMMENTS</string>
+
+
+
+    <string-array name="select_your_team">
+        <item>5291 - TOWR</item>
+    </string-array>
+
+    <integer-array name="scout_team_number">
+        <item>5291</item>
+    </integer-array>
+
+
+    <string-array name="team_names"> // KEARSLEY
+        <item>Select A Team</item>
+        <item>Steel Eagles</item>
+        <item>Lightning Boltz</item>
+        <item>Sonic Eagles</item>
+        <item>Battle Blazers</item>
+        <item>STEAM Stingers</item>
+        <item>TECHNADOS</item>
+        <item>Kearsley Clockworks</item>
+        <item>Vicious Vassar Vulcans</item>
+        <item>Tigers Robotics</item>
+        <item>Oakview CyberDragons</item>
+        <item>Marysville Jr Vi-Bots</item>
+        <item>the wild bees</item>
+        <item>The Killer Coders</item>
+        <item>Calivar Cougars</item>
+        <item>Reese Rockets Middle School Robotics</item>
+        <item>Falconators</item>
+        <item>Knights in Aluminium</item>
+        <item>Cyber Knights</item>
+        <item>Kearsley Scrap Rats</item>
+        <item>Vallibots</item>
+        <item>Omegabots</item>
+        <item>PixelBotics</item>
+        <item>STEAM Works</item>
+        <item>Masterminds</item>
+    </string-array>
+
+    <integer-array name="team_numbers"> // KEARSLEY
+        <item>0</item>
+        <item>5290</item>
+        <item>5954</item>
+        <item>5957</item>
+        <item>7031</item>
+        <item>7255</item>
+        <item>7693</item>
+        <item>8206</item>
+        <item>8239</item>
+        <item>8369</item>
+        <item>8580</item>
+        <item>8688</item>
+        <item>8845</item>
+        <item>9908</item>
+        <item>9861</item>
+        <item>10202</item>
+        <item>10250</item>
+        <item>10297</item>
+        <item>10484</item>
+        <item>10813</item>
+        <item>11305</item>
+        <item>11367</item>
+        <item>11394</item>
+        <item>11668</item>
+        <item>12811</item>
+    </integer-array>
+
+    <string-array name="team_name_number"> // KEARSLEY
+        <item>5290 Steel Eagles</item>
+        <item>5954 Lightning Boltz</item>
+        <item>5957 Sonic Eagles</item>
+        <item>7031 Battle Blazers</item>
+        <item>7255 STEAM Stingers</item>
+        <item>7693 TECHNADOS</item>
+        <item>8206 Kearsley Clockworks</item>
+        <item>8239 Vicious Vassar Vulcans</item>
+        <item>8369 Tigers Robotics</item>
+        <item>8580 Oakview CyberDragons</item>
+        <item>8688 Marysville Jr Vi-Bots</item>
+        <item>8845 the wild bees</item>
+        <item>9908 The Killer Coders</item>
+        <item>9861 Cavilar Cougars</item>
+        <item>10202 Reese Rockets Robotics</item>
+        <item>10250 Falconators</item>
+        <item>10297 Knights in Aluminium</item>
+        <item>10484 Cyber Knights</item>
+        <item>10813 Kearsley Scrap Rats</item>
+        <item>11305 Vallibots</item>
+        <item>11367 Omegabots</item>
+        <item>11394 PixelBotics</item>
+        <item>11668 STEAM Works</item>
+        <item>12811 Masterminds</item>
+    </string-array>
+
+    /*
+    5290 Steel Eagles
+    5954 Lightning Boltz
+    5957 Sonic Eagles
+    7031 Battle Blazers
+    7255 STEAM Stingers
+    7693 TECHNADOS
+    8206 Kearsley Clockworks
+    8239 Vicious Vassar Vulcans
+    8369 Tigers Robotics
+    8580 Oakview CyberDragons
+    8688 Marysville Jr Vi-Bots
+    8845 the wild bees
+    9908 The Killer Coders
+    9861 Calivar Cougars
+    10202 Reese Rockets Middle School Robotics
+    10250 Falconators
+    10297 Knights in Aluminium
+    10484 Cyber Knights
+    10813 Kearsley Scrap Rats
+    11305 Vallibots
+    11367 Omegabots
+    11394 PixelBotics
+    11668 STEAM Works
+    12811 Masterminds
+    */
+
 
 </resources>
