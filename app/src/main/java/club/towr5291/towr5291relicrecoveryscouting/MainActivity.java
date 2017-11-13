@@ -17,12 +17,18 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
+import android.os.Environment;
+import com.opencsv.CSVReader;
+import com.opencsv.CSVWriter;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.lang.ref.WeakReference;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 
@@ -42,8 +48,12 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Objects;
 
+import static android.widget.Toast.makeText;
+import static java.lang.Character.LINE_SEPARATOR;
 import static java.security.AccessController.getContext;
 
 //import static java.security.AccessController.getContext;
@@ -148,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
 
 	Button footer_save_reset;
 
-
+	TextView footer_debug;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -210,6 +220,8 @@ public class MainActivity extends AppCompatActivity {
 		footer_switch_comments = (Button) findViewById(R.id.footer_switch_comments);
 
 		footer_save_reset = (Button) findViewById(R.id.footer_save_reset);
+
+		footer_debug = (TextView) findViewById(R.id.footer_debug);
 
 
 		prematch_layout.setVisibility(View.VISIBLE);
@@ -568,11 +580,13 @@ public class MainActivity extends AppCompatActivity {
 	}
 
 	public void onSave (View view) {
-		Toast.makeText(getApplicationContext(), "Toast", Toast.LENGTH_SHORT);
+		makeText(getApplicationContext(), "Toast", Toast.LENGTH_SHORT);
 		int[] team_number_array = getResources().getIntArray(R.array.team_numbers);
 		String[] team_name_array = getResources().getStringArray(R.array.team_names);
 
+
 		match_number = Integer.valueOf(prematch_input_match.getText().toString());
+
 //		ArrayAdapter<String> adapterTeam = new ArrayAdapter<String>(
 //				this, android.R.layout.simple_spinner_item, getResources().getString(R.array.team_numbers));
 		int spinner_position_team = prematch_select_team.getSelectedItemPosition();
@@ -630,10 +644,10 @@ public class MainActivity extends AppCompatActivity {
 		comment = finalize_comment.getText().toString();
 
 		String[] data_array = {toString(match_number), toString(team_number), team_name, scout, toString(scout_team), toString(autonomousBalanced), toString(ownJewel), toString(otherJewel), toString(autonomousGlyphs), toString(autonomousKeys), toString(autonomousSafeZone), toString(teleopGlyphs), toString(teleopRows), toString(teleopColumns), toString(teleopCiphers), toString(zone1s), toString(zone2s), toString(zone2s), toString(standings), toString(teleopBalanced), "", comment};
-		Toast.makeText(getApplicationContext(), "Toast1", Toast.LENGTH_SHORT);
-		saveFile(getStoragePath(), data_array);
+//		Toast.makeText(getApplicationContext(), "Toast1", Toast.LENGTH_SHORT);
+		saveFile(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), data_array);
 
-
+//		footer_debug.setText(String.valueOf(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY)));
 
 
 //		saveToCSV(getFilesDir() , data_array);
@@ -641,7 +655,7 @@ public class MainActivity extends AppCompatActivity {
 	}
 
 	public File getStoragePath() {
-		return Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS);
+		return Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
 	}
 
 	public String toString (boolean variable) {
@@ -680,28 +694,94 @@ public class MainActivity extends AppCompatActivity {
 	public void saveFile(File path, String[] data_array) {
 //		File matchFile = new File(path, "match" + data_array[0] + "team" + data_array[1] + ".csv");
 		File matchFile = new File(path, "scout.csv");
-		Toast.makeText(getApplicationContext(), "Toast2", Toast.LENGTH_SHORT);
-		if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+//		Toast.makeText(getApplicationContext(), "Toast2", Toast.LENGTH_SHORT);
+//		if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
 //		FileWriter matchesWriter = new FileWriter(matchFile, false);
+
+//		try {
+////			Toast.makeText(getApplicationContext(), "tried", Toast.LENGTH_SHORT);
+//
+//			if (!matchFile.isFile()) {
+//				if (!matchFile.createNewFile()) {
+//					return;
+//				}
+//			}
+//			FileWriter matchesWriter = new FileWriter(matchFile, true);
+////			matchFile.createNewFile();
+////			matchesWriter.write(serializeData(zone1s, zone2s, zone3s, standings));
+//			matchesWriter.write("hello");
+//			matchesWriter.close();
+//			Toast toast = makeText(getApplicationContext(), "SAVED TEH DATA, YAYAYAYAYAYAYYAYAYAYYAYAYAYA!", Toast.LENGTH_LONG);
+//			toast.show();
+//		} catch (Exception e) {
+//			Toast toast = makeText(getApplicationContext(), "Caught error: " + e, Toast.LENGTH_SHORT);
+//			toast.show();
+//		}
+
+		FileOutputStream fos;
+		String newPath = path + "/scout.csv";
+
+
 		try {
-			Toast.makeText(getApplicationContext(), "tried", Toast.LENGTH_SHORT);
-			FileWriter matchesWriter = new FileWriter(matchFile, false);
-			matchFile.createNewFile();
-			matchesWriter.write(serializeData(zone1s, zone2s, zone3s, standings));
-			matchesWriter.close();
+			fos = new FileOutputStream(newPath, true);
 
+			FileWriter fileWriter;
 
-		} catch (Exception e) {
-			Toast.makeText(getApplicationContext(), "Caught error thing", Toast.LENGTH_SHORT);
-		}
-		} else {
-			Toast.makeText(getApplicationContext(), "Went to else", Toast.LENGTH_SHORT);
-				if (ActivityCompat.shouldShowRequestPermissionRationale(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-//					Log.w(TAG, "Permission failed for file writing.");
-				} else {
-					ActivityCompat.requestPermissions(getContext(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
-				}
+			try {
+				fileWriter = new FileWriter(fos.getFD());
+				fileWriter.write("hello");
+				fileWriter.close();
+			} catch (Exception e) {
+				Toast toast = makeText(getApplicationContext(), "Caught error: " + e + " within second try", Toast.LENGTH_LONG);
+				toast.show();
+			} finally {
+				fos.getFD().sync();
+				fos.close();
+				Toast toast = makeText(getApplicationContext(), "Completed File Save (Hopefully)", Toast.LENGTH_SHORT);
+				toast.show();
 			}
+		} catch (Exception e) {
+			Toast toast = makeText(getApplicationContext(), "Caught Error: " + e + " within first try", Toast.LENGTH_LONG);
+			toast.show();
+		}
+
+
+
+//		} else {
+//			Toast.makeText(getApplicationContext(), "Went to else", Toast.LENGTH_SHORT);
+//				if (ActivityCompat.shouldShowRequestPermissionRationale(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+////					Log.w(TAG, "Permission failed for file writing.");
+//				} else {
+//					ActivityCompat.requestPermissions(getContext(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+//				}
+//			}
+
+//		List<String[]> entries = new ArrayList<>();
+//		entries.add(data_array);
+//
+//		try (CSVWriter writer = new CSVWriter(new FileWriter("scoutData.csv"))) {
+//			writer.writeAll(entries);
+//		} catch (Exception e) {
+//
+//		}
+
+
+
+//		try {
+//			String csv = "scouting.csv";
+//			CSVWriter writer = new CSVWriter(new FileWriter(csv));
+//
+//			//Create record
+//			String[] record = data_array;
+//			//Write the record to file
+//			writer.writeNext(record);
+//
+//			//close the writer
+//			writer.close();
+//		} catch (Exception e) {
+//			Toast toast = Toast.makeText(getApplicationContext(), "Caught exception" + e, Toast.LENGTH_SHORT);
+//			toast.show();
+//		}
 	}
 
 	private static final String COMMA = ",";

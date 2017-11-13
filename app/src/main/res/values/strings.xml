@@ -141,6 +141,7 @@
     </integer-array>
 
     <string-array name="team_name_number"> // KEARSLEY
+        <item>Select Team</item>
         <item>5290 Steel Eagles</item>
         <item>5954 Lightning Boltz</item>
         <item>5957 Sonic Eagles</item>
