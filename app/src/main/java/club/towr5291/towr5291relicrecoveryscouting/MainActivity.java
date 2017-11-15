@@ -721,7 +721,13 @@ public class MainActivity extends AppCompatActivity {
 		FileOutputStream fos;
 		String newPath = path + "/scout.csv";
 
-
+		if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+			Toast toast = makeText(getApplicationContext(), "Got permission", Toast.LENGTH_SHORT);
+			toast.show();
+		} else {
+			Toast toast = makeText(getApplicationContext(), "No permission", Toast.LENGTH_SHORT);
+			toast.show();
+		}
 		try {
 			fos = new FileOutputStream(newPath, true);
 
