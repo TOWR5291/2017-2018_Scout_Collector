@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
 	int teleopGlyphs = 0;
 	int teleopRows = 0;
 	int teleopColumns = 0;
-	int teleopCiphers = 0;
+	boolean teleopCiphers = false;
 
 	int relic1Zone = 0;
 	boolean relic1Standing = false;
@@ -269,8 +269,8 @@ public class MainActivity extends AppCompatActivity {
 			public void onClick(View view) {
 				if (!autonomousRedJewel) {
 					autonomousRedJewel = true;
-					updateButtons();
 				}
+				updateButtons();
 			}
 		});
 
@@ -433,8 +433,8 @@ public class MainActivity extends AppCompatActivity {
 		teleop_ciphers.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				if (teleopCiphers != 2) {
-					teleopCiphers++;
+				if (!teleopCiphers) {
+					teleopCiphers = true;
 				}
 				updateButtons();
 			}
@@ -443,8 +443,8 @@ public class MainActivity extends AppCompatActivity {
 		teleop_ciphers.setOnLongClickListener(new View.OnLongClickListener() {
 			@Override
 			public boolean onLongClick(View v) {
-				if (teleopCiphers != 0) {
-					teleopCiphers--;
+				if (teleopCiphers) {
+					teleopCiphers = false;
 				}
 				updateButtons();
 				return true;
@@ -577,75 +577,161 @@ public class MainActivity extends AppCompatActivity {
 				return true;
 			}
 		});
+
+		footer_save_reset.setOnLongClickListener(new View.OnLongClickListener() {
+			@Override
+			public boolean onLongClick(View v) {
+				onSave();
+				updateButtons();
+				return true;
+			}
+
+		});
 	}
 
-	public void onSave (View view) {
-		makeText(getApplicationContext(), "Toast", Toast.LENGTH_SHORT);
-		int[] team_number_array = getResources().getIntArray(R.array.team_numbers);
-		String[] team_name_array = getResources().getStringArray(R.array.team_names);
+	public void onSave () {
+
+		if (prematch_input_match.getText().length() > 0 && prematch_input_scout_name.getText().length() >= 4 && prematch_select_team.getSelectedItemPosition() != 0 && prematch_select_alliance.getSelectedItemPosition() != 0) {
+
+			int[] team_number_array = getResources().getIntArray(R.array.team_numbers);
+			String[] team_name_array = getResources().getStringArray(R.array.team_names);
 
 
-		match_number = Integer.valueOf(prematch_input_match.getText().toString());
+			match_number = Integer.valueOf(prematch_input_match.getText().toString());
 
 //		ArrayAdapter<String> adapterTeam = new ArrayAdapter<String>(
 //				this, android.R.layout.simple_spinner_item, getResources().getString(R.array.team_numbers));
-		int spinner_position_team = prematch_select_team.getSelectedItemPosition();
+			int spinner_position_team = prematch_select_team.getSelectedItemPosition();
 
-		team_number = team_number_array[spinner_position_team];
-		team_name = team_name_array[spinner_position_team];
+			team_number = team_number_array[spinner_position_team];
+			team_name = team_name_array[spinner_position_team];
 
-		int ownJewel = 0;
-		int otherJewel = 0;
+			ownJewel = false;
+			otherJewel = false;
 
-		if (isRed) {
-			if (autonomousRedJewel) {
-				ownJewel = 1;
+			if (prematch_select_alliance.getSelectedItemPosition() == 1) {
+				isRed = true;
 			} else {
-				ownJewel = 0;
+				isRed = false;
 			}
-			if (autonomousBlueJewel) {
-				otherJewel = 1;
-			} else {
-				otherJewel = 0;
+
+			if (isRed) {
+				if (autonomousRedJewel) {
+					ownJewel = true;
+				} else {
+					ownJewel = false;
+				}
+				if (autonomousBlueJewel) {
+					otherJewel = true;
+				} else {
+					otherJewel = false;
+				}
 			}
-		}
 
-		if (!isRed) {
-			if(autonomousBlueJewel) {
-				ownJewel = 1;
-			} else {
-				ownJewel = 0;
+			if (!isRed) {
+				if (autonomousBlueJewel) {
+					ownJewel = true;
+				} else {
+					ownJewel = false;
+				}
+				if (autonomousRedJewel) {
+					otherJewel = true;
+				} else {
+					otherJewel = false;
+				}
 			}
-			if (autonomousRedJewel) {
-				otherJewel = 1;
-			} else {
-				otherJewel = 0;
+
+
+			if (relic1Zone >= 1) {
+				zone1s++;
 			}
-		}
+			if (relic1Zone >= 2) {
+				zone2s++;
+			}
+			if (relic1Zone >= 3) {
+				zone3s++;
+			}
+			if (relic1Standing) {
+				standings++;
+			}
 
+			if (relic2Zone >= 1) {
+				zone1s++;
+			}
+			if (relic2Zone >= 2) {
+				zone2s++;
+			}
+			if (relic2Zone >= 3) {
+				zone3s++;
+			}
+			if (relic2Standing) {
+				standings++;
+			}
 
-		if (relic1Zone > 1) {zone1s++;}
-		if (relic1Zone > 2) {zone2s++;}
-		if (relic1Zone > 3) {zone3s++;}
-		if (relic1Standing) {standings++;}
+			scout = prematch_input_scout_name.getText().toString();
+			scout_team = 5291;
+			comment = finalize_comment.getText().toString();
 
-		if (relic2Zone > 1) {zone1s++;}
-		if (relic2Zone > 2) {zone2s++;}
-		if (relic2Zone > 3) {zone3s++;}
-		if (relic2Standing) {standings++;}
-
-		int team_number = 0;
-		String team_name = "";
-		int match_number = 0;
-		String scout = "";
-		int scout_team = 0;
-		boolean isRed = false;
-		String comment = "";
-		comment = finalize_comment.getText().toString();
-
-		String[] data_array = {toString(match_number), toString(team_number), team_name, scout, toString(scout_team), toString(autonomousBalanced), toString(ownJewel), toString(otherJewel), toString(autonomousGlyphs), toString(autonomousKeys), toString(autonomousSafeZone), toString(teleopGlyphs), toString(teleopRows), toString(teleopColumns), toString(teleopCiphers), toString(zone1s), toString(zone2s), toString(zone2s), toString(standings), toString(teleopBalanced), "", comment};
+			String[] data_array = {toString(match_number), toString(team_number), team_name, scout, toString(scout_team), toString(autonomousBalanced), toString(ownJewel), toString(otherJewel), toString(autonomousGlyphs), toString(autonomousKeys), toString(autonomousSafeZone), toString(teleopGlyphs), toString(teleopRows), toString(teleopColumns), toString(teleopCiphers), toString(zone1s), toString(zone2s), toString(zone2s), toString(standings), toString(teleopBalanced), "", comment};
 //		Toast.makeText(getApplicationContext(), "Toast1", Toast.LENGTH_SHORT);
-		saveFile(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), data_array);
+
+
+			saveFile(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), data_array);
+
+			//resetting stuff
+
+			prematch_layout.setVisibility(View.VISIBLE);
+			setScreen(0);
+			footer_layout.setVisibility(View.VISIBLE);
+
+			team_number = 0;
+			team_name = "";
+			match_number = 0;
+			scout = "";
+			scout_team = 0;
+			isRed = false;
+			comment = "";
+
+			autonomousBalanced = false;
+
+			autonomousRedJewel = false;
+			autonomousBlueJewel = false;
+
+			ownJewel = false;
+			otherJewel = false;
+
+			autonomousGlyphs = 0;
+			autonomousKeys = 0;
+
+			autonomousSafeZone = false;
+
+			teleopGlyphs = 0;
+			teleopRows = 0;
+			teleopColumns = 0;
+			teleopCiphers = false;
+
+			relic1Zone = 0;
+			relic1Standing = false;
+
+			relic2Zone = 0;
+			relic2Standing = false;
+
+			zone1s = 0;
+			zone2s = 0;
+			zone3s = 0;
+			standings = 0;
+
+			teleopBalanced = false;
+
+			currentScreen = 0; // 0 = Autonomous, 1 = TeleOp, 2 = Comments
+
+			updateButtons();
+
+			setScreen(0);
+		} else {
+			Toast toast = makeText(getApplicationContext(), "Please Update the Required Fields to Contain Data", Toast.LENGTH_LONG);
+			toast.show();
+		}
 
 //		footer_debug.setText(String.valueOf(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY)));
 
@@ -694,48 +780,22 @@ public class MainActivity extends AppCompatActivity {
 	public void saveFile(File path, String[] data_array) {
 //		File matchFile = new File(path, "match" + data_array[0] + "team" + data_array[1] + ".csv");
 		File matchFile = new File(path, "scout.csv");
-//		Toast.makeText(getApplicationContext(), "Toast2", Toast.LENGTH_SHORT);
-//		if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-//		FileWriter matchesWriter = new FileWriter(matchFile, false);
 
-//		try {
-////			Toast.makeText(getApplicationContext(), "tried", Toast.LENGTH_SHORT);
-//
-//			if (!matchFile.isFile()) {
-//				if (!matchFile.createNewFile()) {
-//					return;
-//				}
-//			}
-//			FileWriter matchesWriter = new FileWriter(matchFile, true);
-////			matchFile.createNewFile();
-////			matchesWriter.write(serializeData(zone1s, zone2s, zone3s, standings));
-//			matchesWriter.write("hello");
-//			matchesWriter.close();
-//			Toast toast = makeText(getApplicationContext(), "SAVED TEH DATA, YAYAYAYAYAYAYYAYAYAYYAYAYAYA!", Toast.LENGTH_LONG);
-//			toast.show();
-//		} catch (Exception e) {
-//			Toast toast = makeText(getApplicationContext(), "Caught error: " + e, Toast.LENGTH_SHORT);
-//			toast.show();
-//		}
 
 		FileOutputStream fos;
 		String newPath = path + "/scout.csv";
 
-		if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-			Toast toast = makeText(getApplicationContext(), "Got permission", Toast.LENGTH_SHORT);
-			toast.show();
-		} else {
-			Toast toast = makeText(getApplicationContext(), "No permission", Toast.LENGTH_SHORT);
-			toast.show();
-		}
+//		}
 		try {
 			fos = new FileOutputStream(newPath, true);
 
 			FileWriter fileWriter;
 
 			try {
+
+				String data = serializeData(zone1s,zone2s,zone3s,standings);
 				fileWriter = new FileWriter(fos.getFD());
-				fileWriter.write("hello");
+				fileWriter.write(data);
 				fileWriter.close();
 			} catch (Exception e) {
 				Toast toast = makeText(getApplicationContext(), "Caught error: " + e + " within second try", Toast.LENGTH_LONG);
@@ -751,43 +811,6 @@ public class MainActivity extends AppCompatActivity {
 			toast.show();
 		}
 
-
-
-//		} else {
-//			Toast.makeText(getApplicationContext(), "Went to else", Toast.LENGTH_SHORT);
-//				if (ActivityCompat.shouldShowRequestPermissionRationale(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-////					Log.w(TAG, "Permission failed for file writing.");
-//				} else {
-//					ActivityCompat.requestPermissions(getContext(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
-//				}
-//			}
-
-//		List<String[]> entries = new ArrayList<>();
-//		entries.add(data_array);
-//
-//		try (CSVWriter writer = new CSVWriter(new FileWriter("scoutData.csv"))) {
-//			writer.writeAll(entries);
-//		} catch (Exception e) {
-//
-//		}
-
-
-
-//		try {
-//			String csv = "scouting.csv";
-//			CSVWriter writer = new CSVWriter(new FileWriter(csv));
-//
-//			//Create record
-//			String[] record = data_array;
-//			//Write the record to file
-//			writer.writeNext(record);
-//
-//			//close the writer
-//			writer.close();
-//		} catch (Exception e) {
-//			Toast toast = Toast.makeText(getApplicationContext(), "Caught exception" + e, Toast.LENGTH_SHORT);
-//			toast.show();
-//		}
 	}
 
 	private static final String COMMA = ",";
@@ -796,7 +819,7 @@ public class MainActivity extends AppCompatActivity {
 				+ team_number + COMMA
 				+ team_name + COMMA
 				+ scout + COMMA
-				+ scout_team + COMMA
+				+ toString(scout_team) + COMMA
 				+ toString(autonomousBalanced) + COMMA
 				+ toString(ownJewel) + COMMA
 				+ toString(otherJewel) + COMMA
@@ -813,60 +836,9 @@ public class MainActivity extends AppCompatActivity {
 				+ toString(standings) + COMMA
 				+ toString(teleopBalanced) + COMMA
 				+ "" + COMMA
-				+ comment
+				+ comment + COMMA
 		;
 	}
-
-//	private void saveToCSV(File directoryParent, String[] data_array) {
-//		String dateTime = new SimpleDateFormat("yy-MM-dd").format(new Date());
-//		File csvMatches = new File(directoryParent, dateTime + "-matches.csv");
-////		File csvComments = new File(directoryParent, dateTime + "-comments.csv");
-//		try {
-//			if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-//				boolean makeMatches = false;
-//				boolean makeComments = true;
-//				if (!csvMatches.isFile()) {
-//					makeMatches = true;
-//					if (!csvMatches.createNewFile()) {
-//						return;
-//					}
-//				}
-////				if (!csvComments.isFile()) {
-////					makeComments = true;
-////					if (!csvComments.createNewFile()) {
-////						return;
-////					}
-////				}
-//				FileWriter csvMatchesWriter = new FileWriter(csvMatches, true);
-////				FileWriter csvCommentsWriter = new FileWriter(csvComments, true);
-////				if (makeMatches)
-//				csvMatchesWriter.write("match" + match_number + "team" + team_number);
-////				if (makeComments)
-////					csvCommentsWriter.write("match" + match_number + "team" + team_number);
-//				for (MatchData i : Collections.list(data_array)) {
-//					csvMatchesWriter.write(i.serializeDataCSV());
-//					csvCommentsWriter.write(i.serializeCommentsCSV());
-//				}
-////				csvCommentsWriter.write(i.serializeCommentsCSV());
-////				Log.i(TAG, "Wrote logs! " + csvMatches.getAbsolutePath());
-//				Toast.makeText(getContext(), "Created CSVs!", Toast.LENGTH_SHORT);
-//				csvMatchesWriter.close();
-////				csvCommentsWriter.close();
-//
-//
-//
-//
-//			} else {
-//				if (ActivityCompat.shouldShowRequestPermissionRationale(getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-////					Log.w(TAG, "Permission failed for file writing.");
-//				} else {
-//					ActivityCompat.requestPermissions(getContext(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
-//				}
-//			}
-//		} catch (Exception e) {
-////			Log.w(TAG, e);
-//		}
-//	}
 
 	private static String[] push(String[] array, String push) {
 		String[] longer = new String[array.length + 1];
@@ -937,12 +909,10 @@ public class MainActivity extends AppCompatActivity {
 			teleop_columns.setText(getResources().getText(R.string.columns) + "\n0");
 		}
 
-		if (teleopCiphers != 0) {
+		if (teleopCiphers) {
 			setButtonColor(teleop_ciphers, true);
-			teleop_ciphers.setText(getResources().getText(R.string.ciphers) + "\n" + teleopCiphers);
 		} else {
 			setButtonColor(teleop_ciphers, false);
-			teleop_ciphers.setText(getResources().getText(R.string.ciphers) + "\n0");
 		}
 
 		Button[] relics1 = {teleop_relic1_unscoRed, teleop_relic1_zone1, teleop_relic1_zone2, teleop_relic1_zone3};

@@ -84,116 +84,194 @@
     </integer-array>
 
 
-    <string-array name="team_names"> // KEARSLEY
-        <item>Select A Team</item>
-        <item>Steel Eagles</item>
-        <item>Lightning Boltz</item>
-        <item>Sonic Eagles</item>
-        <item>Battle Blazers</item>
-        <item>STEAM Stingers</item>
-        <item>TECHNADOS</item>
-        <item>Kearsley Clockworks</item>
-        <item>Vicious Vassar Vulcans</item>
-        <item>Tigers Robotics</item>
-        <item>Oakview CyberDragons</item>
-        <item>Marysville Jr Vi-Bots</item>
-        <item>the wild bees</item>
-        <item>The Killer Coders</item>
-        <item>Calivar Cougars</item>
-        <item>Reese Rockets Middle School Robotics</item>
-        <item>Falconators</item>
-        <item>Knights in Aluminium</item>
-        <item>Cyber Knights</item>
-        <item>Kearsley Scrap Rats</item>
-        <item>Vallibots</item>
-        <item>Omegabots</item>
-        <item>PixelBotics</item>
-        <item>STEAM Works</item>
-        <item>Masterminds</item>
-    </string-array>
+    <!--<string-array name="team_names"> // KEARSLEY-->
+        <!--<item>Select A Team</item>-->
+        <!--<item>Steel Eagles</item>-->
+        <!--<item>Lightning Boltz</item>-->
+        <!--<item>Sonic Eagles</item>-->
+        <!--<item>Battle Blazers</item>-->
+        <!--<item>STEAM Stingers</item>-->
+        <!--<item>TECHNADOS</item>-->
+        <!--<item>Kearsley Clockworks</item>-->
+        <!--<item>Vicious Vassar Vulcans</item>-->
+        <!--<item>Tigers Robotics</item>-->
+        <!--<item>Oakview CyberDragons</item>-->
+        <!--<item>Marysville Jr Vi-Bots</item>-->
+        <!--<item>the wild bees</item>-->
+        <!--<item>The Killer Coders</item>-->
+        <!--<item>Calivar Cougars</item>-->
+        <!--<item>Reese Rockets Middle School Robotics</item>-->
+        <!--<item>Falconators</item>-->
+        <!--<item>Knights in Aluminium</item>-->
+        <!--<item>Cyber Knights</item>-->
+        <!--<item>Kearsley Scrap Rats</item>-->
+        <!--<item>Vallibots</item>-->
+        <!--<item>Omegabots</item>-->
+        <!--<item>PixelBotics</item>-->
+        <!--<item>STEAM Works</item>-->
+        <!--<item>Masterminds</item>-->
+    <!--</string-array>-->
 
-    <integer-array name="team_numbers"> // KEARSLEY
+    <!--<integer-array name="team_numbers"> // KEARSLEY-->
+        <!--<item>0</item>-->
+        <!--<item>5290</item>-->
+        <!--<item>5954</item>-->
+        <!--<item>5957</item>-->
+        <!--<item>7031</item>-->
+        <!--<item>7255</item>-->
+        <!--<item>7693</item>-->
+        <!--<item>8206</item>-->
+        <!--<item>8239</item>-->
+        <!--<item>8369</item>-->
+        <!--<item>8580</item>-->
+        <!--<item>8688</item>-->
+        <!--<item>8845</item>-->
+        <!--<item>9908</item>-->
+        <!--<item>9861</item>-->
+        <!--<item>10202</item>-->
+        <!--<item>10250</item>-->
+        <!--<item>10297</item>-->
+        <!--<item>10484</item>-->
+        <!--<item>10813</item>-->
+        <!--<item>11305</item>-->
+        <!--<item>11367</item>-->
+        <!--<item>11394</item>-->
+        <!--<item>11668</item>-->
+        <!--<item>12811</item>-->
+    <!--</integer-array>-->
+
+    <!--<string-array name="team_name_number"> // KEARSLEY-->
+        <!--<item>Select Team</item>-->
+        <!--<item>5290 Steel Eagles</item>-->
+        <!--<item>5954 Lightning Boltz</item>-->
+        <!--<item>5957 Sonic Eagles</item>-->
+        <!--<item>7031 Battle Blazers</item>-->
+        <!--<item>7255 STEAM Stingers</item>-->
+        <!--<item>7693 TECHNADOS</item>-->
+        <!--<item>8206 Kearsley Clockworks</item>-->
+        <!--<item>8239 Vicious Vassar Vulcans</item>-->
+        <!--<item>8369 Tigers Robotics</item>-->
+        <!--<item>8580 Oakview CyberDragons</item>-->
+        <!--<item>8688 Marysville Jr Vi-Bots</item>-->
+        <!--<item>8845 the wild bees</item>-->
+        <!--<item>9908 The Killer Coders</item>-->
+        <!--<item>9861 Cavilar Cougars</item>-->
+        <!--<item>10202 Reese Rockets Robotics</item>-->
+        <!--<item>10250 Falconators</item>-->
+        <!--<item>10297 Knights in Aluminium</item>-->
+        <!--<item>10484 Cyber Knights</item>-->
+        <!--<item>10813 Kearsley Scrap Rats</item>-->
+        <!--<item>11305 Vallibots</item>-->
+        <!--<item>11367 Omegabots</item>-->
+        <!--<item>11394 PixelBotics</item>-->
+        <!--<item>11668 STEAM Works</item>-->
+        <!--<item>12811 Masterminds</item>-->
+    <!--</string-array>-->
+
+    <integer-array name="team_numbers" > // DETROIT
         <item>0</item>
-        <item>5290</item>
-        <item>5954</item>
-        <item>5957</item>
-        <item>7031</item>
-        <item>7255</item>
-        <item>7693</item>
-        <item>8206</item>
-        <item>8239</item>
-        <item>8369</item>
-        <item>8580</item>
-        <item>8688</item>
-        <item>8845</item>
-        <item>9908</item>
-        <item>9861</item>
-        <item>10202</item>
-        <item>10250</item>
-        <item>10297</item>
-        <item>10484</item>
-        <item>10813</item>
-        <item>11305</item>
-        <item>11367</item>
-        <item>11394</item>
-        <item>11668</item>
+        <item>5237</item>
+        <item>5291</item>
+        <item>5976</item>
+        <item>6079</item>
+        <item>7049</item>
+        <item>7085</item>
+        <item>7901</item>
+        <item>7902</item>
+        <item>8511</item>
+        <item>8573</item>
+        <item>8777</item>
+        <item>9352</item>
+        <item>9572</item>
+        <item>9895</item>
+        <item>10035</item>
+        <item>10210</item>
+        <item>10280</item>
+        <item>10644</item>
+        <item>10645</item>
+        <item>10803</item>
+        <item>10812</item>
+        <item>11176</item>
+        <item>11340</item>
+        <item>11438</item>
+        <item>12467</item>
+        <item>12549</item>
         <item>12811</item>
+        <item>12876</item>
+        <item>13026</item>
+        <item>13333</item>
+        <item>13462</item>
+        <item>13777</item>
     </integer-array>
 
-    <string-array name="team_name_number"> // KEARSLEY
-        <item>Select Team</item>
-        <item>5290 Steel Eagles</item>
-        <item>5954 Lightning Boltz</item>
-        <item>5957 Sonic Eagles</item>
-        <item>7031 Battle Blazers</item>
-        <item>7255 STEAM Stingers</item>
-        <item>7693 TECHNADOS</item>
-        <item>8206 Kearsley Clockworks</item>
-        <item>8239 Vicious Vassar Vulcans</item>
-        <item>8369 Tigers Robotics</item>
-        <item>8580 Oakview CyberDragons</item>
-        <item>8688 Marysville Jr Vi-Bots</item>
-        <item>8845 the wild bees</item>
-        <item>9908 The Killer Coders</item>
-        <item>9861 Cavilar Cougars</item>
-        <item>10202 Reese Rockets Robotics</item>
-        <item>10250 Falconators</item>
-        <item>10297 Knights in Aluminium</item>
-        <item>10484 Cyber Knights</item>
-        <item>10813 Kearsley Scrap Rats</item>
-        <item>11305 Vallibots</item>
-        <item>11367 Omegabots</item>
-        <item>11394 PixelBotics</item>
-        <item>11668 STEAM Works</item>
-        <item>12811 Masterminds</item>
+    <string-array name="team_names"> // DETROIT
+        <item>Select Team...</item>
+        <item>Loose Screws</item>
+        <item>TOWR</item>
+        <item>Brandon Tech</item>
+        <item>Bionic Broncos</item>
+        <item>Omega Warriors</item>
+        <item>F.L.A.G Fight Like a Girl</item>
+        <item>Bulldozers</item>
+        <item>Da Cows</item>
+        <item>Gryphon Bots</item>
+        <item>The Eagles</item>
+        <item>The Goonies</item>
+        <item>Holbrook Hawks</item>
+        <item>ChatterBoltz</item>
+        <item>Robohill</item>
+        <item>Robo Rangers</item>
+        <item>Aztechs</item>
+        <item>TechnoLions</item>
+        <item>CyBugs</item>
+        <item>Hornet Hackers</item>
+        <item>McU-Bots</item>
+        <item>STEM-Bots</item>
+        <item>Panthers</item>
+        <item>Iron Eagels</item>
+        <item>SAY Play Warriors 2</item>
+        <item>Robo Potatos</item>
+        <item>Robo Rebels</item>
+        <item>IntergalacTECH</item>
+        <item>R.U BOTS</item>
+        <item>Shrine Roboknights</item>
+        <item>SmithKnights</item>
+        <item>McU-Bots</item>
     </string-array>
 
-    /*
-    5290 Steel Eagles
-    5954 Lightning Boltz
-    5957 Sonic Eagles
-    7031 Battle Blazers
-    7255 STEAM Stingers
-    7693 TECHNADOS
-    8206 Kearsley Clockworks
-    8239 Vicious Vassar Vulcans
-    8369 Tigers Robotics
-    8580 Oakview CyberDragons
-    8688 Marysville Jr Vi-Bots
-    8845 the wild bees
-    9908 The Killer Coders
-    9861 Calivar Cougars
-    10202 Reese Rockets Middle School Robotics
-    10250 Falconators
-    10297 Knights in Aluminium
-    10484 Cyber Knights
-    10813 Kearsley Scrap Rats
-    11305 Vallibots
-    11367 Omegabots
-    11394 PixelBotics
-    11668 STEAM Works
-    12811 Masterminds
-    */
-
-
+    <string-array name="team_name_number">
+        <item>Select Team...</item>
+        <item>5237 Loose Screws</item>
+        <item>5291 TOWR</item>
+        <item>5976 Brandon Tech</item>
+        <item>6079 Bionic Broncos</item>
+        <item>7049 Omega Warriors</item>
+        <item>7085 F.L.A.G. Fight Like a Girl</item>
+        <item>7901 Bulldozers</item>
+        <item>7902 Da Cows</item>
+        <item>8511 Gryphon Bots</item>
+        <item>8753 The Eagles</item>
+        <item>8777 The Goonies</item>
+        <item>9352 Holbrook Hawks</item>
+        <item>9572 ChatterBoltz</item>
+        <item>9895 Robohills</item>
+        <item>10035 Robo Rangers</item>
+        <item>10210 Aztechs</item>
+        <item>10280 TechnoLions</item>
+        <item>10644 CyBugs</item>
+        <item>10645 Hornet hackers</item>
+        <item>10803 McU-Bots</item>
+        <item>10812 STEM-Bots</item>
+        <item>11176 Panthers</item>
+        <item>11340 Iron Eagles</item>
+        <item>11438 SAY Play Warriors 2</item>
+        <item>12367 Robo Potatos</item>
+        <item>12549 Robo Rebels</item>
+        <item>12811 Masterminds</item>
+        <item>12876 IntergalacTECH</item>
+        <item>13026 R.U BOTS</item>
+        <item>13333 Shrine Roboknights</item>
+        <item>13462 SmithKnights</item>
+        <item>13777 McU-Bots</item>
+    </string-array>
 </resources>
