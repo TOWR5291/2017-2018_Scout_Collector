@@ -50,7 +50,7 @@
 
                 <EditText
                     android:id="@+id/prematch_input_scout_name"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:layout_marginLeft="8dp"
@@ -133,21 +133,18 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginStart="8dp"
                     android:text="@string/start_match_select_textview"
-                    app:layout_constraintBaseline_toBaselineOf="@+id/prematch_input_match"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/prematch_match_number"
                     app:layout_constraintLeft_toLeftOf="parent"
                     tools:text="@string/start_match_select_textview"/>
 
-                <EditText
-                    android:id="@+id/prematch_input_match"
-                    android:layout_width="31dp"
+                <Button
+                    android:id="@+id/prematch_match_number"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="8dp"
-                    android:ems="10"
-                    android:hint="@string/start_hint_text_1"
-                    android:inputType="number"
-                    android:maxLength="2"
+                    android:text="@string/prematch_match"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/prematch_select_team"/>
 
@@ -170,7 +167,7 @@
                     android:layout_marginTop="8dp"
                     android:entries="@array/select_alliance"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/prematch_input_match"/>
+                    app:layout_constraintTop_toBottomOf="@+id/prematch_match_number"/>
 
             </android.support.constraint.ConstraintLayout>
 
@@ -601,7 +598,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
                     android:ems="10"
-                    android:inputType="textMultiLine"
+                    android:inputType="textCapCharacters|textCapWords|textCapSentences"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/finalize_comments_static"/>
@@ -619,7 +616,7 @@
 
                 <Button
                     android:id="@+id/footer_switch_autonomous"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:onClick="switchToAutonomous"
                     android:text="@string/switch_autonomous"
@@ -629,7 +626,7 @@
 
                 <Button
                     android:id="@+id/footer_switch_teleop"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:onClick="switchToTeleOp"
                     android:text="@string/switch_teleop"
@@ -640,7 +637,7 @@
 
                 <Button
                     android:id="@+id/footer_switch_comments"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:onClick="switchToComments"
                     android:text="@string/switch_comments"
@@ -650,26 +647,25 @@
                     />
 
                 <Button
-                    android:id="@+id/footer_save_reset"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/footer_reset"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="32dp"
-                    android:text="@string/finish"
+                    android:text="@string/reset"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/footer_switch_comments"/>
 
-                <TextView
-                    android:id="@+id/footer_debug"
-                    android:layout_width="wrap_content"
+                <Button
+                    android:id="@+id/footer_save_reset"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginStart="8dp"
+                    android:text="@string/finish"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/footer_save_reset"/>
+                    app:layout_constraintTop_toBottomOf="@+id/footer_reset"/>
+
             </android.support.constraint.ConstraintLayout>
 
         </android.support.constraint.ConstraintLayout>

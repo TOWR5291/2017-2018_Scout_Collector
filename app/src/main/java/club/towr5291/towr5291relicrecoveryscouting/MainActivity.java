@@ -118,7 +118,8 @@ public class MainActivity extends AppCompatActivity {
 	Spinner prematch_select_scout_team;
 
 	Spinner prematch_select_team;
-	EditText prematch_input_match;
+//	EditText prematch_input_match;
+	Button prematch_match_number;
 	Spinner prematch_select_alliance;
 
 	Button autonomous_balanced;
@@ -156,6 +157,7 @@ public class MainActivity extends AppCompatActivity {
 	Button footer_switch_teleop;
 	Button footer_switch_comments;
 
+	Button footer_reset;
 	Button footer_save_reset;
 
 	TextView footer_debug;
@@ -179,10 +181,11 @@ public class MainActivity extends AppCompatActivity {
 
 		prematch_input_scout_name = (EditText) findViewById(R.id.prematch_input_scout_name);
 		prematch_select_scout_team = (Spinner) findViewById(R.id.prematch_select_scout_team);
+		prematch_match_number = (Button) findViewById(R.id.prematch_match_number);
 		prematch_select_alliance = (Spinner) findViewById(R.id.prematch_select_alliance);
 
 		prematch_select_team = (Spinner) findViewById(R.id.prematch_select_team);
-		prematch_input_match = (EditText) findViewById(R.id.prematch_input_match);
+//		prematch_input_match = (EditText) findViewById(R.id.prematch_input_match);
 
 		autonomous_balanced = (Button) findViewById(R.id.autonomous_robot_balanced);
 
@@ -219,9 +222,10 @@ public class MainActivity extends AppCompatActivity {
 		footer_switch_teleop = (Button) findViewById(R.id.footer_switch_teleop);
 		footer_switch_comments = (Button) findViewById(R.id.footer_switch_comments);
 
+		footer_reset = (Button) findViewById(R.id.footer_reset);
 		footer_save_reset = (Button) findViewById(R.id.footer_save_reset);
 
-		footer_debug = (TextView) findViewById(R.id.footer_debug);
+//		footer_debug = (TextView) findViewById(R.id.footer_debug);
 
 
 		prematch_layout.setVisibility(View.VISIBLE);
@@ -240,6 +244,26 @@ public class MainActivity extends AppCompatActivity {
 		autonomous_blue_jewel.setWidth(width/2);
 
 		// Setting long & short click listeners
+
+		prematch_match_number.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				match_number++;
+				updateButtons();
+
+			}
+		});
+
+		prematch_match_number.setOnLongClickListener(new View.OnLongClickListener() {
+			@Override
+			public boolean onLongClick(View v) {
+				if (match_number != 0) {
+					match_number--;
+				}
+				updateButtons();
+				return true;
+			}
+		});
 
 		autonomous_balanced.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -587,20 +611,25 @@ public class MainActivity extends AppCompatActivity {
 			}
 
 		});
+
+		footer_reset.setOnLongClickListener(new View.OnLongClickListener() {
+			@Override
+			public boolean onLongClick(View v) {
+				resetData();
+				updateButtons();
+				return true;
+			}
+
+		});
 	}
 
 	public void onSave () {
 
-		if (prematch_input_match.getText().length() > 0 && prematch_input_scout_name.getText().length() >= 4 && prematch_select_team.getSelectedItemPosition() != 0 && prematch_select_alliance.getSelectedItemPosition() != 0) {
+		if (/*prematch_input_match.getText().length() > 0 && */prematch_input_scout_name.getText().length() >= 4 && prematch_select_team.getSelectedItemPosition() != 0 && prematch_select_alliance.getSelectedItemPosition() != 0) {
 
 			int[] team_number_array = getResources().getIntArray(R.array.team_numbers);
 			String[] team_name_array = getResources().getStringArray(R.array.team_names);
 
-
-			match_number = Integer.valueOf(prematch_input_match.getText().toString());
-
-//		ArrayAdapter<String> adapterTeam = new ArrayAdapter<String>(
-//				this, android.R.layout.simple_spinner_item, getResources().getString(R.array.team_numbers));
 			int spinner_position_team = prematch_select_team.getSelectedItemPosition();
 
 			team_number = team_number_array[spinner_position_team];
@@ -670,7 +699,22 @@ public class MainActivity extends AppCompatActivity {
 
 			scout = prematch_input_scout_name.getText().toString();
 			scout_team = 5291;
-			comment = finalize_comment.getText().toString();
+//			comment = finalize_comment.getText().toString();
+			comment = "";
+			String rawComment = finalize_comment.getText().toString();
+			for (int i = 0; i < rawComment.length(); i++) {
+				if (toString(rawComment.charAt(i)) == COMMA) {
+					comment += ".";
+				} else if (toString(rawComment.charAt(i)) == ENTER) {
+					comment += " ";
+				} else {
+					comment += toString(rawComment.charAt(i));
+				}
+				if (toString(rawComment.charAt(i)) == ENTER) {
+					Toast toast = makeText(getApplicationContext(), "Contains ENTER", Toast.LENGTH_SHORT);
+					toast.show();
+				}
+			}
 
 			String[] data_array = {toString(match_number), toString(team_number), team_name, scout, toString(scout_team), toString(autonomousBalanced), toString(ownJewel), toString(otherJewel), toString(autonomousGlyphs), toString(autonomousKeys), toString(autonomousSafeZone), toString(teleopGlyphs), toString(teleopRows), toString(teleopColumns), toString(teleopCiphers), toString(zone1s), toString(zone2s), toString(zone2s), toString(standings), toString(teleopBalanced), "", comment};
 //		Toast.makeText(getApplicationContext(), "Toast1", Toast.LENGTH_SHORT);
@@ -678,56 +722,7 @@ public class MainActivity extends AppCompatActivity {
 
 			saveFile(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), data_array);
 
-			//resetting stuff
-
-			prematch_layout.setVisibility(View.VISIBLE);
-			setScreen(0);
-			footer_layout.setVisibility(View.VISIBLE);
-
-			team_number = 0;
-			team_name = "";
-			match_number = 0;
-			scout = "";
-			scout_team = 0;
-			isRed = false;
-			comment = "";
-
-			autonomousBalanced = false;
-
-			autonomousRedJewel = false;
-			autonomousBlueJewel = false;
-
-			ownJewel = false;
-			otherJewel = false;
-
-			autonomousGlyphs = 0;
-			autonomousKeys = 0;
-
-			autonomousSafeZone = false;
-
-			teleopGlyphs = 0;
-			teleopRows = 0;
-			teleopColumns = 0;
-			teleopCiphers = false;
-
-			relic1Zone = 0;
-			relic1Standing = false;
-
-			relic2Zone = 0;
-			relic2Standing = false;
-
-			zone1s = 0;
-			zone2s = 0;
-			zone3s = 0;
-			standings = 0;
-
-			teleopBalanced = false;
-
-			currentScreen = 0; // 0 = Autonomous, 1 = TeleOp, 2 = Comments
-
-			updateButtons();
-
-			setScreen(0);
+		resetData();
 		} else {
 			Toast toast = makeText(getApplicationContext(), "Please Update the Required Fields to Contain Data", Toast.LENGTH_LONG);
 			toast.show();
@@ -738,6 +733,64 @@ public class MainActivity extends AppCompatActivity {
 
 //		saveToCSV(getFilesDir() , data_array);
 //		saveFile(getFilesDir(), data_array);
+	}
+
+	public void resetData() {
+		prematch_select_team.setSelection(0);
+
+		prematch_layout.setVisibility(View.VISIBLE);
+		setScreen(0);
+		footer_layout.setVisibility(View.VISIBLE);
+
+		team_number = 0;
+		team_name = "";
+		scout = "";
+		scout_team = 0;
+		isRed = false;
+		comment = "";
+
+		autonomousBalanced = false;
+
+		autonomousRedJewel = false;
+		autonomousBlueJewel = false;
+
+		ownJewel = false;
+		otherJewel = false;
+
+		autonomousGlyphs = 0;
+		autonomousKeys = 0;
+
+		autonomousSafeZone = false;
+
+		teleopGlyphs = 0;
+		teleopRows = 0;
+		teleopColumns = 0;
+		teleopCiphers = false;
+
+		relic1Zone = 0;
+		relic1Standing = false;
+
+		relic2Zone = 0;
+		relic2Standing = false;
+
+		zone1s = 0;
+		zone2s = 0;
+		zone3s = 0;
+		standings = 0;
+
+		teleopBalanced = false;
+
+		finalize_comment.setText("");
+
+		currentScreen = 0; // 0 = Autonomous, 1 = TeleOp, 2 = Comments
+
+		match_number++;
+
+		enableDisableAutonomous(false);
+
+		updateButtons();
+
+		setScreen(0);
 	}
 
 	public File getStoragePath() {
@@ -751,8 +804,10 @@ public class MainActivity extends AppCompatActivity {
 			return "0";
 		}
 	}
-
 	public String toString (int variable) {
+		return String.valueOf(variable);
+	}
+	public String toString (char variable) {
 		return String.valueOf(variable);
 	}
 
@@ -762,6 +817,12 @@ public class MainActivity extends AppCompatActivity {
 		} else {
 			return 0;
 		}
+	}
+	public int toInt (String variable) {
+		return Integer.valueOf(variable);
+	}
+	public int toInt (char variable) {
+		return Integer.valueOf(variable);
 	}
 
 	private static Activity getContext() throws NullPointerException {
@@ -781,6 +842,7 @@ public class MainActivity extends AppCompatActivity {
 //		File matchFile = new File(path, "match" + data_array[0] + "team" + data_array[1] + ".csv");
 		File matchFile = new File(path, "scout.csv");
 
+		String ENTER = System.getProperty("line.separator");
 
 		FileOutputStream fos;
 		String newPath = path + "/scout.csv";
@@ -796,6 +858,7 @@ public class MainActivity extends AppCompatActivity {
 				String data = serializeData(zone1s,zone2s,zone3s,standings);
 				fileWriter = new FileWriter(fos.getFD());
 				fileWriter.write(data);
+				fileWriter.write(ENTER);
 				fileWriter.close();
 			} catch (Exception e) {
 				Toast toast = makeText(getApplicationContext(), "Caught error: " + e + " within second try", Toast.LENGTH_LONG);
@@ -814,6 +877,7 @@ public class MainActivity extends AppCompatActivity {
 	}
 
 	private static final String COMMA = ",";
+	private static final String ENTER = System.getProperty("line.separator");
 	public String serializeData(int zone1s, int zone2s, int zone3s, int standings) {
 		return    match_number + COMMA
 				+ team_number + COMMA
@@ -940,6 +1004,8 @@ public class MainActivity extends AppCompatActivity {
 		setButtonColor(teleop_relic2_standing, relic2Standing);
 
 		setButtonColor(teleop_balanced, teleopBalanced);
+
+		prematch_match_number.setText(getResources().getText(R.string.prematch_match) + " " + toString(match_number));
 	}
 
 	public void setButtonColor (Button button, boolean onOff) {
