@@ -6,6 +6,7 @@
 
     <string name="app_name">TOWR 5291 Relic Recovery Scouting</string>
     <string name="start_hint_text_1">##</string>
+    <string name="prematch_match">MATCH: </string>
     <string name="start_match_select_textview">Input Match Number:</string>
     <string name="select_autonomous">Go to Autonomous</string>
     <string name="select_teleop">Go to Teleop</string>
@@ -31,7 +32,7 @@
     <string name="rows">ROWS</string>
     <string name="columns">COLUMNS</string>
     <string name="relics">RELICS</string>
-    <string name="ciphers">CIPHERS</string>
+    <string name="ciphers">CIPHER</string>
     <string name="autonomous_key_bonus">KEY BONUSES</string>
     <string name="autonomous_safe_zone">PARKED IN SAFE ZONE</string>
 
@@ -64,6 +65,7 @@
     <string name="finish_balanced">Robot is Balanced at end of Match</string>
 
     <string name="finish">Save &amp; Reset</string>
+    <string name="reset">RESET DATA</string>
 
     <string name="autonomous">AUTONOMOUS</string>
     <string name="teleop">TELEOP</string>
