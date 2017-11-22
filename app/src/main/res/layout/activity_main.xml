@@ -567,7 +567,7 @@
                 android:id="@+id/finalize_layout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:visibility="visible"
+                android:visibility="gone"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/teleop_layout"
