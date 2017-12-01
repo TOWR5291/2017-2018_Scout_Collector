@@ -344,65 +344,91 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="16dp"
                     android:text="@string/cryptobox_header"
                     android:textSize="24sp"
                     android:textStyle="bold"
+                    app:layout_constraintHorizontal_bias="0.497"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView"/>
 
-                <Button
-                    android:id="@+id/teleop_glyphs"
-                    android:layout_width="88dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/glyphs"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/teleop_cryptobox_header_static" />
-
-                <Button
-                    android:id="@+id/teleop_rows"
-                    android:layout_width="88dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/rows"
-                    app:layout_constraintBaseline_toBaselineOf="@+id/teleop_glyphs"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    tools:layout_editor_absoluteX="0dp"/>
-
-                <Button
-                    android:id="@+id/teleop_columns"
-                    android:layout_width="88dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
-                    android:text="@string/columns"
-                    app:layout_constraintBaseline_toBaselineOf="@+id/teleop_glyphs"
-                    app:layout_constraintRight_toRightOf="parent"
-                    android:layout_marginEnd="8dp"/>
-
-                <Button
-                    android:id="@+id/teleop_ciphers"
+                <RelativeLayout
+                    android:id="@+id/cryptoboxLayout1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="8dp"
-                    android:text="@string/ciphers"
+                    android:weightSum="3"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/teleop_columns"
+                    app:layout_constraintTop_toBottomOf="@+id/teleop_cryptobox_header_static"
                     android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"/>
+                    android:layout_marginEnd="8dp">
+
+                    <Button
+                        android:id="@+id/teleop_glyphs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/teleop_rows"
+                        android:layout_alignBottom="@+id/teleop_rows"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginLeft="8dp"
+                        android:layout_weight="1"
+                        android:text="@string/glyphs"
+                        app:layout_constraintLeft_toLeftOf="parent"/>
+
+                    <Button
+                        android:id="@+id/teleop_rows"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_weight="1"
+                        android:text="@string/rows"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/teleop_glyphs"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:layout_editor_absoluteX="128dp"/>
+
+                    <Button
+                        android:id="@+id/teleop_columns"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight="1"
+                        android:text="@string/columns"
+                        app:layout_constraintBaseline_toBaselineOf="@+id/teleop_rows"
+                        app:layout_constraintRight_toRightOf="parent"/>
+
+                </RelativeLayout>
+
+                <Button
+                    android:id="@+id/teleop_ciphers"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/ciphers"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cryptoboxLayout1"/>
 
                 <TextView
                     android:id="@+id/teleop_relic_header_static"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:text="@string/relics"
                     android:textSize="24sp"
