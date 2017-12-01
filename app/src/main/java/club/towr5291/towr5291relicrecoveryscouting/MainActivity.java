@@ -218,9 +218,9 @@ public class MainActivity extends AppCompatActivity {
 
 		finalize_comment = (EditText) findViewById(R.id.finalize_comment);
 
-//		footer_switch_autonomous = (Button) findViewById(R.id.footer_switch_autonomous);
-//		footer_switch_teleop = (Button) findViewById(R.id.footer_switch_teleop);
-//		footer_switch_comments = (Button) findViewById(R.id.footer_switch_comments);
+		footer_switch_autonomous = (Button) findViewById(R.id.footer_switch_autonomous);
+		footer_switch_teleop = (Button) findViewById(R.id.footer_switch_teleop);
+		footer_switch_comments = (Button) findViewById(R.id.footer_switch_comments);
 
 		footer_reset = (Button) findViewById(R.id.footer_reset);
 		footer_save_reset = (Button) findViewById(R.id.footer_save_reset);
@@ -229,13 +229,10 @@ public class MainActivity extends AppCompatActivity {
 
 
 		prematch_layout.setVisibility(View.VISIBLE);
-		autonomous_layout.setVisibility(View.VISIBLE);
-		teleop_layout.setVisibility(View.VISIBLE);
-		comments_layout.setVisibility(View.VISIBLE);
 		footer_layout.setVisibility(View.VISIBLE);
 
-//		setScreen(0);
-//test
+		setScreen(0);
+
 		enableDisableAutonomous(false);
 
 		DisplayMetrics displayMetrics = new DisplayMetrics();
@@ -1036,7 +1033,7 @@ public class MainActivity extends AppCompatActivity {
 	}
 
 	public void setScreen (int screen) {
-		/*if (screen == 0) {
+		if (screen == 0) {
 			autonomous_layout.setVisibility(View.VISIBLE);
 			teleop_layout.setVisibility(View.GONE);
 			comments_layout.setVisibility(View.GONE);
@@ -1060,6 +1057,6 @@ public class MainActivity extends AppCompatActivity {
 			footer_switch_autonomous.setVisibility(View.VISIBLE);
 			footer_switch_teleop.setVisibility(View.VISIBLE);
 			footer_switch_comments.setVisibility(View.GONE);
-		}*/
+		}
 	}
 }
