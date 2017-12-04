@@ -1,6 +1,6 @@
 <resources>
     <string name="input_scout_hint">Input YOUR Name</string>
-    <string name="select_scout_team_hint">Select YOUR team:</string>
+    <string name="select_scout_team_hint">Select YOUR Team:</string>
 
     <string name="proceed_prematch">Proceed to Scouting</string>
 
@@ -78,11 +78,17 @@
 
 
     <string-array name="select_your_team">
+        <item>Select Your Team</item>
         <item>5291 - TOWR</item>
+        <item>11230 - ElektraKatz</item>
+        <item>11231 - Cyborg Cats</item>
     </string-array>
 
     <integer-array name="scout_team_number">
+        <item>0</item>
         <item>5291</item>
+        <item>11230</item>
+        <item>11231</item>
     </integer-array>
 
 
@@ -170,7 +176,7 @@
         <!--<item>12811 Masterminds</item>-->
     <!--</string-array>-->
 
-    <integer-array name="team_numbers" > // DETROIT
+<!--    <integer-array name="team_numbers" > // DETROIT
         <item>0</item>
         <item>5237</item>
         <item>5291</item>
@@ -205,9 +211,9 @@
         <item>13462</item>
         <item>13777</item>
         <item>0</item>
-    </integer-array>
+    </integer-array>-->
 
-    <string-array name="team_names"> // DETROIT
+<!--    <string-array name="team_names"> // DETROIT
         <item>Select Team...</item>
         <item>Loose Screws</item>
         <item>TOWR</item>
@@ -241,9 +247,9 @@
         <item>SmithKnights</item>
         <item>McU-Bots</item>
         <item>Other</item>
-    </string-array>
+    </string-array>-->
 
-    <string-array name="team_name_number">
+<!--    <string-array name="team_name_number"> // DETROIT
         <item>Select Team...</item>
         <item>5237 Loose Screws</item>
         <item>5291 TOWR</item>
@@ -277,6 +283,129 @@
         <item>13333 Shrine Roboknights</item>
         <item>13462 SmithKnights</item>
         <item>13777 McU-Bots</item>
+        <item>Other</item>
+    </string-array>-->
+
+    <integer-array name="team_numbers"> // OXFORD
+        <item>0</item>
+        <item>5291</item>
+        <item>5976</item>
+        <item>6225</item>
+        <item>7049</item>
+        <item>7140</item>
+        <item>7252</item>
+        <item>7253</item>
+        <item>7254</item>
+        <item>7693</item>
+        <item>7950</item>
+        <item>8478</item>
+        <item>8580</item>
+        <item>9028</item>
+        <item>10016</item>
+        <item>10176</item>
+        <item>10545</item>
+        <item>11013</item>
+        <item>11230</item>
+        <item>11231</item>
+        <item>11340</item>
+        <item>11520</item>
+        <item>11637</item>
+        <item>11691</item>
+        <item>11739</item>
+        <item>12085</item>
+        <item>12111</item>
+        <item>12181</item>
+        <item>12505</item>
+        <item>12549</item>
+        <item>12862</item>
+        <item>12890</item>
+        <item>13417</item>
+        <item>13462</item>
+        <item>13627</item>
+        <item>13643</item>
+        <item>13809</item>
+        <item>0</item>
+    </integer-array>
+
+    <string-array name="team_names"> // OXFORD
+        <item>Select Team</item>
+        <item>TOWR</item>
+        <item>Brandon Tech</item>
+        <item>Synergy</item>
+        <item>Omega Warriors</item>
+        <item>Knightmares</item>
+        <item>Vicious Volts</item>
+        <item>Raging Robots</item>
+        <item>S.W.A.T. Shelby Wildcat Autonomous Techies</item>
+        <item>TECHNADOS</item>
+        <item>The Pineapple Warriros</item>
+        <item>E-Bots</item>
+        <item>Oakview CyberDragons</item>
+        <item>Savage Warriors</item>
+        <item>Clarkston RoboWolves</item>
+        <item>Robotex</item>
+        <item>Atomic Bombs</item>
+        <item>AHCS CouGears</item>
+        <item>OMS Elektrakatz</item>
+        <item>Cyborg Cats</item>
+        <item>Iron Eagles</item>
+        <item>Omegabots</item>
+        <item>Grease Wolves</item>
+        <item>Scripps Dragons</item>
+        <item>Cyborg Wolves</item>
+        <item>Royal Oak Robotics Fighting Bulldogs</item>
+        <item>Royal Oak Robotics Fighting Bulldogs</item>
+        <item>Royal Oak Robotics Fighting Bulldogs</item>
+        <item>White Lake Middle School Bionic Warriors</item>
+        <item>Robo Rebels</item>
+        <item>Waldon Dragons</item>
+        <item>Emerson E.A.G.L.E.S.</item>
+        <item>Circuit Rush</item>
+        <item>Digital Owls</item>
+        <item>DigiMinds 2.0</item>
+        <item>Rebel Wreckers</item>
+        <item>Troy Cyborg</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="team_name_number">
+        <item>Select Team</item>
+        <item>5291 TOWR</item>
+        <item>5976 Brandon Tech</item>
+        <item>6225 Synergy</item>
+        <item>7049 Omega Warriors</item>
+        <item>7140 Knightmares</item>
+        <item>7252 Vicious Volts</item>
+        <item>7253 Raging Robots</item>
+        <item>7254 S.W.A.T. (Shelby)</item>
+        <item>7693 TECHNADOS</item>
+        <item>7950 The Pineapple Warriors</item>
+        <item>8478 E-Bots</item>
+        <item>8580 Oakview CyberDragons</item>
+        <item>9028 Savage Warriors</item>
+        <item>10016 Clarkston RoboWolves</item>
+        <item>10176 Robotex</item>
+        <item>10545 Atomic Bombs</item>
+        <item>11013 AHCS CouGears</item>
+        <item>11230 OMS ElektraKatz</item>
+        <item>11231 Cyborg Cats</item>
+        <item>11340 Iron Eagles</item>
+        <item>11520 Omegabots</item>
+        <item>11637 Grease Wolves</item>
+        <item>11619 Scripps Dragons</item>
+        <item>11739 Cyborg Wolves</item>
+        <item>12085 Royal Oak Fighting Bulldogs</item>
+        <item>12111 Royal Oak Fighting Bulldogs</item>
+        <item>12181 Royal Oak Fighting Bulldogs</item>
+        <item>12505 White Lake Bionic Warriors</item>
+        <item>12549 Robo Rebels</item>
+        <item>12862 Waldon Dragons</item>
+        <item>12890 Emerson E.A.G.L.E.S</item>
+        <item>13417 Circuit Rush</item>
+        <item>13462 Digital Owls</item>
+        <item>13627 DigiMinds 2.0</item>
+        <item>13643 Rebel Wreckers</item>
+        <item>13809 Troy Cyborg</item>
         <item>Other</item>
     </string-array>
 </resources>

@@ -654,7 +654,7 @@ public class MainActivity extends AppCompatActivity {
 
 	public void onSave () {
 
-		if (/*prematch_input_match.getText().length() > 0 && */ prematch_input_scout_name.getText().length() >= 4 && ((prematch_select_team.getSelectedItemPosition() != 0 && !isOtherTeam) || (isOtherTeam && prematch_other_team_input.getText().length() > 3)) && prematch_select_alliance.getSelectedItemPosition() != 0) {
+		if (/*prematch_input_match.getText().length() > 0 && */ prematch_input_scout_name.getText().length() >= 4 && ((prematch_select_team.getSelectedItemPosition() != 0 && !isOtherTeam) || (isOtherTeam && prematch_other_team_input.getText().length() > 3)) && prematch_select_alliance.getSelectedItemPosition() != 0 && prematch_select_scout_team.getSelectedItemPosition() != 0 && match_number != 0) {
 
 			int[] team_number_array = getResources().getIntArray(R.array.team_numbers);
 			String[] team_name_array = getResources().getStringArray(R.array.team_names);
@@ -733,7 +733,11 @@ public class MainActivity extends AppCompatActivity {
 			}
 
 			scout = prematch_input_scout_name.getText().toString();
-			scout_team = 5291;
+
+			int scout_team_spinner_position = prematch_select_scout_team.getSelectedItemPosition();
+			int[] scout_teams = getResources().getIntArray(R.array.scout_team_number);
+			scout_team = scout_teams[scout_team_spinner_position];
+
 //			comment = finalize_comment.getText().toString();
 			comment = "";
 			String rawComment = finalize_comment.getText().toString();
