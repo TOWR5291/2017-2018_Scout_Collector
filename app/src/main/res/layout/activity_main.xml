@@ -32,6 +32,8 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
+                <View android:layout_width="fill_parent" android:id="@+id/focus_view" android:layout_height="0dp" android:focusable="true" android:focusableInTouchMode="true"><requestFocus/></View>
+
                 <TextView
                     android:id="@+id/prematch_scout_data_static"
                     android:layout_width="wrap_content"
