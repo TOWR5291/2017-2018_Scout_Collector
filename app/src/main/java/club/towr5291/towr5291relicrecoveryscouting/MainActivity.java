@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -42,6 +43,8 @@ import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -66,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 	int team_number = 0;
+	boolean isOtherTeam = false;
 	String team_name = "";
 	int match_number = 0;
 	String scout = "";
@@ -119,6 +123,8 @@ public class MainActivity extends AppCompatActivity {
 
 	Spinner prematch_select_team;
 //	EditText prematch_input_match;
+	TextView prematch_other_team_static;
+	EditText prematch_other_team_input;
 	Button prematch_match_number;
 	Spinner prematch_select_alliance;
 
@@ -181,6 +187,8 @@ public class MainActivity extends AppCompatActivity {
 
 		prematch_input_scout_name = (EditText) findViewById(R.id.prematch_input_scout_name);
 		prematch_select_scout_team = (Spinner) findViewById(R.id.prematch_select_scout_team);
+		prematch_other_team_static = (TextView) findViewById(R.id.prematch_other_team_static);
+		prematch_other_team_input = (EditText) findViewById(R.id.prematch_other_team_input);
 		prematch_match_number = (Button) findViewById(R.id.prematch_match_number);
 		prematch_select_alliance = (Spinner) findViewById(R.id.prematch_select_alliance);
 
@@ -235,15 +243,34 @@ public class MainActivity extends AppCompatActivity {
 
 		enableDisableAutonomous(false);
 
-		DisplayMetrics displayMetrics = new DisplayMetrics();
-		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-		int height = displayMetrics.heightPixels;
-		int width = displayMetrics.widthPixels;
+//		prematch_other_team_input.setVisibility(View.GONE);
+//		prematch_other_team_static.setVisibility(View.GONE);
 
-		autonomous_red_jewel.setWidth(31);
-		autonomous_blue_jewel.setWidth(width/2);
+		//set listeners for buttons
 
+		setListeners();
+
+		enableOtherTeam(false);
+	}
+
+	public void setListeners () {
 		// Setting long & short click listeners
+
+		prematch_select_team.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+				if(prematch_select_team.getSelectedItemPosition() == getResources().getStringArray(R.array.team_name_number).length - 1) {
+					enableOtherTeam(true);
+				} else {
+					enableOtherTeam(false);
+				}
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+
+			}
+		});
 
 		prematch_match_number.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -621,19 +648,27 @@ public class MainActivity extends AppCompatActivity {
 			}
 
 		});
+
+
 	}
 
 	public void onSave () {
 
-		if (/*prematch_input_match.getText().length() > 0 && */prematch_input_scout_name.getText().length() >= 4 && prematch_select_team.getSelectedItemPosition() != 0 && prematch_select_alliance.getSelectedItemPosition() != 0) {
+		if (/*prematch_input_match.getText().length() > 0 && */ prematch_input_scout_name.getText().length() >= 4 && ((prematch_select_team.getSelectedItemPosition() != 0 && !isOtherTeam) || (isOtherTeam && prematch_other_team_input.getText().length() > 3)) && prematch_select_alliance.getSelectedItemPosition() != 0) {
 
 			int[] team_number_array = getResources().getIntArray(R.array.team_numbers);
 			String[] team_name_array = getResources().getStringArray(R.array.team_names);
 
 			int spinner_position_team = prematch_select_team.getSelectedItemPosition();
 
-			team_number = team_number_array[spinner_position_team];
-			team_name = team_name_array[spinner_position_team];
+			if (!isOtherTeam) {
+				team_number = team_number_array[spinner_position_team];
+				team_name = team_name_array[spinner_position_team];
+			} else {
+				team_number = toInt(prematch_other_team_input.getText().toString());
+				team_name = "Unknown";
+			}
+
 
 			ownJewel = false;
 			otherJewel = false;
@@ -791,6 +826,8 @@ public class MainActivity extends AppCompatActivity {
 		updateButtons();
 
 		setScreen(0);
+
+		enableOtherTeam(false);
 	}
 
 	public File getStoragePath() {
@@ -1014,6 +1051,18 @@ public class MainActivity extends AppCompatActivity {
 		} else {
 			button.setBackgroundColor(getResources().getColor(R.color.button_on));
 		}
+	}
+
+	public void enableOtherTeam(Boolean on) {
+		if(on) {
+			prematch_other_team_static.setVisibility(View.VISIBLE);
+			prematch_other_team_input.setVisibility(View.VISIBLE);
+		}  else {
+			prematch_other_team_static.setVisibility(View.GONE);
+			prematch_other_team_input.setVisibility(View.GONE);
+		}
+		prematch_other_team_input.setText("");
+		isOtherTeam = on;
 	}
 
 	public void enableDisableAutonomous (Boolean enabled) {
