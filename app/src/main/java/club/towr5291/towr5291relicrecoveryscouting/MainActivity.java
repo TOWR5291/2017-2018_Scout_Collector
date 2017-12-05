@@ -251,6 +251,15 @@ public class MainActivity extends AppCompatActivity {
 		setListeners();
 
 		enableOtherTeam(false);
+
+		int permissionCheck = ContextCompat.checkSelfPermission(getApplicationContext(),
+				Manifest.permission.WRITE_EXTERNAL_STORAGE);
+		if (permissionCheck == PackageManager.PERMISSION_GRANTED) {}
+		else {
+			ActivityCompat.requestPermissions(getContext(),
+					new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+					1);
+		}
 	}
 
 	public void setListeners () {
