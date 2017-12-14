@@ -288,6 +288,7 @@
         <item>Other</item>
     </string-array>-->
 
+<!--
     <integer-array name="team_numbers"> // OXFORD
         <item>0</item>
         <item>5291</item>
@@ -328,8 +329,9 @@
         <item>13809</item>
         <item>0</item>
     </integer-array>
+-->
 
-    <string-array name="team_names"> // OXFORD
+<!--    <string-array name="team_names"> // OXFORD
         <item>Select Team</item>
         <item>TOWR</item>
         <item>Brandon Tech</item>
@@ -368,9 +370,9 @@
         <item>Rebel Wreckers</item>
         <item>Troy Cyborg</item>
         <item>Other</item>
-    </string-array>
+    </string-array>-->
 
-    <string-array name="team_name_number">
+<!--    <string-array name="team_name_number"> // STATES
         <item>Select Team</item>
         <item>5291 TOWR</item>
         <item>5976 Brandon Tech</item>
@@ -408,6 +410,163 @@
         <item>13627 DigiMinds 2.0</item>
         <item>13643 Rebel Wreckers</item>
         <item>13809 Troy Cyborg</item>
+        <item>Other</item>
+    </string-array>-->
+
+
+    <integer-array name="team_numbers">
+        <item>0</item>
+        <item>5290</item>
+        <item>5291</item>
+        <item>5292</item>
+        <item>5385</item>
+        <item>5391</item>
+        <item>5957</item>
+        <item>6076</item>
+        <item>6225</item>
+        <item>7023</item>
+        <item>7043</item>
+        <item>7048</item>
+        <item>7049</item>
+        <item>7085</item>
+        <item>7138</item>
+        <item>7228</item>
+        <item>7252</item>
+        <item>8133</item>
+        <item>8239</item>
+        <item>8553</item>
+        <item>5879</item>
+        <item>8621</item>
+        <item>8646</item>
+        <item>8935</item>
+        <item>9133</item>
+        <item>9514</item>
+        <item>9855</item>
+        <item>10031</item>
+        <item>10035</item>
+        <item>10062</item>
+        <item>10538</item>
+        <item>10723</item>
+        <item>11230</item>
+        <item>11244</item>
+        <item>11367</item>
+        <item>11617</item>
+        <item>11717</item>
+        <item>11846</item>
+        <item>11870</item>
+        <item>11987</item>
+        <item>12811</item>
+        <item>12845</item>
+        <item>12862</item>
+        <item>12895</item>
+        <item>13157</item>
+        <item>13222</item>
+        <item>13250</item>
+        <item>13702</item>
+        <item>0</item>
+    </integer-array>
+
+    <string-array name="team_names"> // STATES
+        <item>Select Team...</item>
+        <item>Steel Eagles</item>
+        <item>TOWR The Oxford Wildcats Robotics</item>
+        <item>Red Storm Robotics-White</item>
+        <item>Enigma Riddlers</item>
+        <item>Enigma Puzzlers</item>
+        <item>Sonic Eagles</item>
+        <item>Bionic Broncos</item>
+        <item>Synergy</item>
+        <item>HexaSonics</item>
+        <item>Golden Gears</item>
+        <item>F.L.A.G. Fight Like A Girl</item>
+        <item>Mechanical Mayhem</item>
+        <item>Struke Force - Special Air Service</item>
+        <item>Vicious Volts</item>
+        <item>Raging Robots</item>
+        <item>Bionic Sailors</item>
+        <item>Vicious Vassar Vulcans</item>
+        <item>Stryke Force - Screaming Eagles</item>
+        <item>Classical Engineers</item>
+        <item>G3: Geeks, Gears &amp; Gadgets Blue</item>
+        <item>Team KAOS</item>
+        <item>Twisted Metal</item>
+        <item>Robo Dawgs</item>
+        <item>Cardinal Overload</item>
+        <item>Mattawan FTC RoboKats - CyberKlaws</item>
+        <item>Red Storm Robotics-Blue</item>
+        <item>Robo Rangers</item>
+        <item>Robogators</item>
+        <item>Team KILT</item>
+        <item>SnowBots Blue</item>
+        <item>OMS ELektraKatz</item>
+        <item>Thunderbots</item>
+        <item>Omegabots</item>
+        <item>Chelsea Glitch</item>
+        <item>Circuit Breakers</item>
+        <item>Wayland Wildcat Cat-a-Tech-Nics</item>
+        <item>West Bloomfield Short Circuit</item>
+        <item>East Grand Rapids Middle School</item>
+        <item>Masterminds</item>
+        <item>FHPS METEORS</item>
+        <item>Waldon Dragons</item>
+        <item>HF_FTC__#2</item>
+        <item>Steel Falcons</item>
+        <item>Green Mustaches</item>
+        <item>LavaBots</item>
+        <item>Joe Bots - White</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="team_name_number">
+        <item>Select Team...</item>
+        <item>5290 Steel Eagles</item>
+        <item>5291 TOWR The Oxford Wildcats Robotics</item>
+        <item>5292 Red Storm Robotics-White</item>
+        <item>5385 Enigma Riddlers</item>
+        <item>5391 Enigma Puzzlers</item>
+        <item>5957 Sonic Eagles</item>
+        <item>6079 Bionic Broncos</item>
+        <item>6225 Synergy</item>
+        <item>7023 HexaSonics</item>
+        <item>7043 Golden Gears</item>
+        <item>7048 Purple Protons</item>
+        <item>7049 Omega Warriors</item>
+        <item>7085 F.L.A.G. Fight Like a Girl</item>
+        <item>7138 Mechanical Mayhem</item>
+        <item>7228 Stryke Force - Special Air Service</item>
+        <item>7252 Vicious Volts</item>
+        <item>7253 Raging Robots</item>
+        <item>8133 Bionic Sailors</item>
+        <item>8239 Vicious Vassar Vulcans</item>
+        <item>8553 Stryke Force - Screaming Eagles</item>
+        <item>8579 Classical Engineers</item>
+        <item>8621 G3: Geeks, Gears &amp; Gadgets Blue</item>
+        <item>8646 Team KAOS</item>
+        <item>8935 Twisted Metal</item>
+        <item>9133 Robo Dawgs</item>
+        <item>9514 Cardinal Overload</item>
+        <item>9855 Mattawan FTC RoboKats - CyberKlaws</item>
+        <item>10031 Red Storm RObotics-Blue</item>
+        <item>10035 Robo Rangers</item>
+        <item>10062 Robogators</item>
+        <item>10538 Team KILT</item>
+        <item>10723 SnowBots Blue</item>
+        <item>11230 OMS ELektraKatz</item>
+        <item>11244 Thunderbots</item>
+        <item>11367 Omegabots</item>
+        <item>11617 Chelsea Glitch</item>
+        <item>11717 Circuit Breakers</item>
+        <item>11846 Wayland Wildcat Cat-a-Tech-Nics</item>
+        <item>11870 West Bloomfield Short Circuit</item>
+        <item>11987 East Grand Rapids Middle School</item>
+        <item>12811 Masterminds</item>
+        <item>12845 FHPS METEORS</item>
+        <item>12862 Waldon Dragons</item>
+        <item>12895 HF_FTC__#2</item>
+        <item>13157 Steel Falcons</item>
+        <item>13222 Green Mustaches</item>
+        <item>13250 LavaBots</item>
+        <item>13702 Joe Bots - White</item>
         <item>Other</item>
     </string-array>
 </resources>
