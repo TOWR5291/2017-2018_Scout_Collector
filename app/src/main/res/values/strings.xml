@@ -52,6 +52,8 @@
         <item>Zone 3</item>
     </string-array>
 
+
+    <string name="attempted">ATTEMPTED</string>
     <string name="not_scored">UNSCORED</string>
     <string name="zone1">ZONE 1</string>
     <string name="zone2">ZONE 2</string>

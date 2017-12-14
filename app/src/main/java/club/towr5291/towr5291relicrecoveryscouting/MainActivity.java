@@ -143,13 +143,13 @@ public class MainActivity extends AppCompatActivity {
 	Button teleop_columns;
 	Button teleop_ciphers;
 
-	Button teleop_relic1_unscoRed;
+	Button teleop_relic1_unscored;
 	Button teleop_relic1_zone1;
 	Button teleop_relic1_zone2;
 	Button teleop_relic1_zone3;
 	Button teleop_relic1_standing;
 
-	Button teleop_relic2_unscoRed;
+	Button teleop_relic2_unscored;
 	Button teleop_relic2_zone1;
 	Button teleop_relic2_zone2;
 	Button teleop_relic2_zone3;
@@ -210,13 +210,13 @@ public class MainActivity extends AppCompatActivity {
 		teleop_columns = (Button) findViewById(R.id.teleop_columns);
 		teleop_ciphers = (Button) findViewById(R.id.teleop_ciphers);
 
-		teleop_relic1_unscoRed = (Button) findViewById(R.id.teleop_relic1_unscored);
+		teleop_relic1_unscored = (Button) findViewById(R.id.teleop_relic1_unscored);
 		teleop_relic1_zone1 = (Button) findViewById(R.id.teleop_relic1_zone1);
 		teleop_relic1_zone2 = (Button) findViewById(R.id.teleop_relic1_zone2);
 		teleop_relic1_zone3 = (Button) findViewById(R.id.teleop_relic1_zone3);
 		teleop_relic1_standing = (Button) findViewById(R.id.teleop_relic1_standing);
 
-		teleop_relic2_unscoRed = (Button) findViewById(R.id.teleop_relic2_unscored);
+		teleop_relic2_unscored = (Button) findViewById(R.id.teleop_relic2_unscored);
 		teleop_relic2_zone1 = (Button) findViewById(R.id.teleop_relic2_zone1);
 		teleop_relic2_zone2 = (Button) findViewById(R.id.teleop_relic2_zone2);
 		teleop_relic2_zone3 = (Button) findViewById(R.id.teleop_relic2_zone3);
@@ -511,7 +511,7 @@ public class MainActivity extends AppCompatActivity {
 			}
 		});
 
-		teleop_relic1_unscoRed.setOnClickListener(new View.OnClickListener() {
+		teleop_relic1_unscored.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
 				relic1Zone = 0;
@@ -543,7 +543,7 @@ public class MainActivity extends AppCompatActivity {
 			}
 		});
 
-		teleop_relic2_unscoRed.setOnClickListener(new View.OnClickListener() {
+		teleop_relic2_unscored.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
 				relic2Zone = 0;
@@ -1029,7 +1029,7 @@ public class MainActivity extends AppCompatActivity {
 			setButtonColor(teleop_ciphers, false);
 		}
 
-		Button[] relics1 = {teleop_relic1_unscoRed, teleop_relic1_zone1, teleop_relic1_zone2, teleop_relic1_zone3};
+		Button[] relics1 = {teleop_relic1_unscored, teleop_relic1_zone1, teleop_relic1_zone2, teleop_relic1_zone3};
 
 		for (int i = 0; i < 4; i++) {
 			if (i == relic1Zone) {
@@ -1041,7 +1041,7 @@ public class MainActivity extends AppCompatActivity {
 
 		setButtonColor(teleop_relic1_standing, relic1Standing);
 
-		Button[] relics2 = {teleop_relic2_unscoRed, teleop_relic2_zone1, teleop_relic2_zone2, teleop_relic2_zone3};
+		Button[] relics2 = {teleop_relic2_unscored, teleop_relic2_zone1, teleop_relic2_zone2, teleop_relic2_zone3};
 
 		for (int i = 0; i < 4; i++) {
 			if (i == relic2Zone) {
