@@ -67,6 +67,9 @@ public class MainActivity extends AppCompatActivity {
 
 	public static WeakReference<MainActivity> instance;
 
+	// Setup the variables used for tracking the status of everything, used in updating the buttons
+	// Also has other global variables that are required, like team_name, and scout
+	// This must be only within the class, nothing else
 
 	int team_number = 0;
 	boolean isOtherTeam = false;
@@ -111,6 +114,8 @@ public class MainActivity extends AppCompatActivity {
 	int currentScreen = 0; // 0 = Autonomous, 1 = TeleOp, 2 = Comments
 
 	// The Declaration of Things
+	// Sets up the variables for all of the views (buttons, text, dropdowns) and the layouts (prematch, autonomous, teleop, etc.)
+	// This section must be only within the class, nothing else
 
 	ConstraintLayout prematch_layout;
 	ConstraintLayout autonomous_layout;
@@ -170,15 +175,21 @@ public class MainActivity extends AppCompatActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		// This method is run on the creation of the activity (screen) and sets EVERYTHING involving the layout up
+
+		// Required Android stuff, sets the layout to activity_main
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		getSupportActionBar().setTitle("TOWR5291 2017 Scouting"); // set the top title
+		// set the top title so that it is more descriptive
+		getSupportActionBar().setTitle("TOWR5291 2017 Scouting");
 
-		//TORC stuff that I will never understand
+		//TORC thing that I will never understand
+		//Required for the saving to work
 		instance = new WeakReference<>(this);
 
-		//Get references to buttons & layouts & whatnot
+		// Load all of the views & layouts to their respective variables so that they can be used later
+		// This section MUST go in the onCreate method
 		prematch_layout = (ConstraintLayout) findViewById(R.id.prematch_layout);
 		autonomous_layout = (ConstraintLayout) findViewById(R.id.autonomous_layout);
 		teleop_layout = (ConstraintLayout) findViewById(R.id.teleop_layout);
@@ -232,12 +243,11 @@ public class MainActivity extends AppCompatActivity {
 
 		footer_reset = (Button) findViewById(R.id.footer_reset);
 		footer_save_reset = (Button) findViewById(R.id.footer_save_reset);
-
 //		footer_debug = (TextView) findViewById(R.id.footer_debug);
-
 
 		prematch_layout.setVisibility(View.VISIBLE);
 		footer_layout.setVisibility(View.VISIBLE);
+
 
 		setScreen(0);
 
@@ -252,6 +262,12 @@ public class MainActivity extends AppCompatActivity {
 
 		enableOtherTeam(false);
 
+		// I hate these next few lines of code
+
+		// Newer versions of android require that some permissions be requested in the app, and not on install
+		// Checks if the saving permissions are granted
+		// If there is no permission, seemingly if it is a newer version of android, it pops up a blank
+		// Since I am installing the app, I will always hit accept
 		int permissionCheck = ContextCompat.checkSelfPermission(getApplicationContext(),
 				Manifest.permission.WRITE_EXTERNAL_STORAGE);
 		if (permissionCheck == PackageManager.PERMISSION_GRANTED) {}
@@ -262,8 +278,18 @@ public class MainActivity extends AppCompatActivity {
 		}
 	}
 
+	// Sets up the listeners
 	public void setListeners () {
-		// Setting long & short click listeners
+		/*
+		Setting up the listeners
+		This creates the actions to happen when we want to have a user action be found
+		Most of these are for buttons with a short and long click listener, but there a few exceptions
+		The save & reset and the reset buttons have only a long listener to detect when the user is sure they want to do it
+		At the top, there is a listener for the prematch_select_team which listens for when the users selects something, then if it is other, it pops up the 'other' box
+		The all of the listeners, excluding the team dropdown, check if the value should be changed, change it if needed, then updateButtons()
+
+		This method MUST be run at startup
+		 */
 
 		prematch_select_team.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 			@Override
@@ -661,7 +687,12 @@ public class MainActivity extends AppCompatActivity {
 
 	}
 
+	// What happens when the data should be saved
 	public void onSave () {
+
+		// Checks if everything is filled out correctly at the top of the screen
+		// Gathers all of the data
+		// Saves the data
 
 		if (/*prematch_input_match.getText().length() > 0 && */ prematch_input_scout_name.getText().length() >= 4 && ((prematch_select_team.getSelectedItemPosition() != 0 && !isOtherTeam) || (isOtherTeam && prematch_other_team_input.getText().length() > 3)) && prematch_select_alliance.getSelectedItemPosition() != 0 && prematch_select_scout_team.getSelectedItemPosition() != 0 && match_number != 0) {
 
@@ -783,7 +814,12 @@ public class MainActivity extends AppCompatActivity {
 //		saveFile(getFilesDir(), data_array);
 	}
 
+	// Resets all of the data for the match, along with the team number, and increments the match number
 	public void resetData() {
+
+		// This just resets all of the variables, and makes sure everything is setup as it should be on app startup
+		// Then runs updateButtons to update it all
+
 		prematch_select_team.setSelection(0);
 
 		prematch_layout.setVisibility(View.VISIBLE);
@@ -843,10 +879,12 @@ public class MainActivity extends AppCompatActivity {
 		enableOtherTeam(false);
 	}
 
+	// Gets the desired storage path, currently set to the Downloads folder
 	public File getStoragePath() {
 		return Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
 	}
 
+	// A bunch of functions to unclutter the code, just changes things to strings and ints for easy saving and processing
 	public String toString (boolean variable) {
 		if (variable) {
 			return "1";
@@ -860,7 +898,6 @@ public class MainActivity extends AppCompatActivity {
 	public String toString (char variable) {
 		return String.valueOf(variable);
 	}
-
 	public int toInt (boolean variable) {
 		if (variable) {
 			return 1;
@@ -875,6 +912,7 @@ public class MainActivity extends AppCompatActivity {
 		return Integer.valueOf(variable);
 	}
 
+	// Not to be confused with getApplicationContext(), this returns an instance of the screen
 	private static Activity getContext() throws NullPointerException {
 //		if (DebugActivity.instance == null) {
 //			if (MainActivity.instance == null) {
@@ -888,46 +926,61 @@ public class MainActivity extends AppCompatActivity {
 		return MainActivity.instance.get();
 	}
 
+	// The save method, it saves the actual file with the supplied data
 	public void saveFile(File path, String[] data_array) {
+
+		// A lot of this function is from the internet
+
+		// Creates a file that is the scout.csv file
 //		File matchFile = new File(path, "match" + data_array[0] + "team" + data_array[1] + ".csv");
 		File matchFile = new File(path, "scout.csv");
 
+		// Gets the enter to be used in the CSV file
 		String ENTER = System.getProperty("line.separator");
 
+		// Creates the way to actually write the files
 		FileOutputStream fos;
+
+		// Gets the file path to the csv
 		String newPath = path + "/scout.csv";
 
-//		}
+		// The actual file saving is withing the try's, and the error detection/reporting is within the catch's.
+		// If there is an error, it shows a popup with the error and where it was located
+		// Everything in the try's must be within there to compile
 		try {
-			fos = new FileOutputStream(newPath, true);
 
-			FileWriter fileWriter;
+			fos = new FileOutputStream(newPath, true); // Sets the FileOutputStream's file path, and sets it to add to the file, not replace
+
+			FileWriter fileWriter; // Creates the file writing process
 
 			try {
-
-				String data = serializeData(zone1s,zone2s,zone3s,standings);
-				fileWriter = new FileWriter(fos.getFD());
-				fileWriter.write(data);
-				fileWriter.write(ENTER);
-				fileWriter.close();
+				String data = serializeData(zone1s,zone2s,zone3s,standings); // Gets the string to be saved, with commas
+				fileWriter = new FileWriter(fos.getFD()); // Finalizes the setup of the FileWriter
+				fileWriter.write(data); // Writes the data
+				fileWriter.write(ENTER); // Adds an enter so that in the spreadsheet, the data is on a new row
+				fileWriter.close(); // Closes the FileWriter (This MUST be done to prevent an error when saving the second time
 			} catch (Exception e) {
-				Toast toast = makeText(getApplicationContext(), "Caught error: " + e + " within second try", Toast.LENGTH_LONG);
+				Toast toast = makeText(getApplicationContext(), "Caught error: " + e + " within second try", Toast.LENGTH_LONG); // Shows popup with error message
 				toast.show();
 			} finally {
-				fos.getFD().sync();
-				fos.close();
-				Toast toast = makeText(getApplicationContext(), "Completed File Save (Hopefully)", Toast.LENGTH_SHORT);
+				fos.getFD().sync(); // idk what this does
+				fos.close(); // Closes the output stream, this must be done to prevent errors
+				Toast toast = makeText(getApplicationContext(), "Completed File Save (Hopefully)", Toast.LENGTH_SHORT); // Shows save completed dialog
 				toast.show();
 			}
 		} catch (Exception e) {
-			Toast toast = makeText(getApplicationContext(), "Caught Error: " + e + " within first try", Toast.LENGTH_LONG);
+			Toast toast = makeText(getApplicationContext(), "Caught Error: " + e + " within first try", Toast.LENGTH_LONG); // Shows popup with error message
 			toast.show();
 		}
 
 	}
 
+	// 2 Characters used to make life easier in the serializeData function and saveFile function
 	private static final String COMMA = ",";
 	private static final String ENTER = System.getProperty("line.separator");
+
+	// Puts all of the data into one long string, which is then saved to the file.
+	// This just makes everything easier and cleaner
 	public String serializeData(int zone1s, int zone2s, int zone3s, int standings) {
 		return    match_number + COMMA
 				+ team_number + COMMA
@@ -954,27 +1007,26 @@ public class MainActivity extends AppCompatActivity {
 		;
 	}
 
-	private static String[] push(String[] array, String push) {
-		String[] longer = new String[array.length + 1];
-		for (int i = 0; i < array.length; i++)
-			longer[i] = array[i];
-		longer[array.length] = push;
-		return longer;
-	}
 
+	// The screen switches, run when the button for the switch is presses
 	public void switchToAutonomous (View view) {
 		setScreen(0);
 	}
-
 	public void switchToTeleOp (View view) {
 		setScreen(1);
 	}
-
 	public void switchToComments (View view) {
 		setScreen(2);
 	}
 
+	// Updates all of the buttons to reflect their current values
 	public void updateButtons () {
+
+		// For integer values, checks if the value is zero, then colors the button 'off' if it is zero, and on if it is not zero, then adds the number to the button text, using string resources
+		// For Booleans, just sets the button color accordingly
+		// For relic zones, sets the button to be off unless it is the current zone, NOT just that zone or above
+
+		// Note: often times, this method is run multiple times on one user action, but that doesn't affect performance noticeably
 
 		setButtonColor(autonomous_balanced, autonomousBalanced);
 
@@ -1058,7 +1110,9 @@ public class MainActivity extends AppCompatActivity {
 		prematch_match_number.setText(getResources().getText(R.string.prematch_match) + " " + toString(match_number));
 	}
 
+	// Sets the button to green or gray depending if the button is on or off
 	public void setButtonColor (Button button, boolean onOff) {
+		// Uses color resources to keep the color consistent and easy to change
 		if (!onOff) {
 			button.setBackgroundColor(getResources().getColor(R.color.button_off));
 		} else {
@@ -1066,6 +1120,7 @@ public class MainActivity extends AppCompatActivity {
 		}
 	}
 
+	// For team picking, is run if the other team editText should show up
 	public void enableOtherTeam(Boolean on) {
 		if(on) {
 			prematch_other_team_static.setVisibility(View.VISIBLE);
@@ -1078,6 +1133,7 @@ public class MainActivity extends AppCompatActivity {
 		isOtherTeam = on;
 	}
 
+	// For autonomous, enables or disables the buttons and resets their values if the autonomous button is on or off
 	public void enableDisableAutonomous (Boolean enabled) {
 		autonomous_red_jewel.setEnabled(enabled);
 		autonomous_blue_jewel.setEnabled(enabled);
@@ -1094,7 +1150,10 @@ public class MainActivity extends AppCompatActivity {
 		updateButtons();
 	}
 
+	// Sets the current screen
 	public void setScreen (int screen) {
+		// Uses hiding the layout to switch, uses hiding so no loading of fragments is required
+		// I will admit, fragment loading is better in organization of everything
 		if (screen == 0) {
 			autonomous_layout.setVisibility(View.VISIBLE);
 			teleop_layout.setVisibility(View.GONE);
