@@ -2,62 +2,30 @@ package club.towr5291.towr5291relicrecoveryscouting;
 
 import android.Manifest;
 import android.app.Activity;
-import android.app.VoiceInteractor;
-import android.content.Context;
 import android.content.pm.PackageManager;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.os.Environment;
-import com.opencsv.CSVReader;
-import com.opencsv.CSVWriter;
+
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.lang.ref.WeakReference;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
 
-import android.Manifest;
-import android.app.Activity;
-import android.content.Context;
-import android.content.pm.PackageManager;
-import android.os.Environment;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.util.Log;
-import android.widget.Toast;
-
-import org.w3c.dom.Text;
-
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Collections;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Objects;
 
 import static android.widget.Toast.makeText;
-import static java.lang.Character.LINE_SEPARATOR;
-import static java.security.AccessController.getContext;
+
 
 //import static java.security.AccessController.getContext;
 
