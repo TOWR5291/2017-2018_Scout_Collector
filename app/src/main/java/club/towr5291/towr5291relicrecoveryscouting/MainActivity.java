@@ -3,6 +3,7 @@ package club.towr5291.towr5291relicrecoveryscouting;
 import android.Manifest;
 import android.app.Activity;
 import android.content.pm.PackageManager;
+import android.media.MediaScannerConnection;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -927,6 +928,7 @@ public class MainActivity extends AppCompatActivity {
 				fileWriter.write(data); // Writes the data
 				fileWriter.write(ENTER); // Adds an enter so that in the spreadsheet, the data is on a new row
 				fileWriter.close(); // Closes the FileWriter (This MUST be done to prevent an error when saving the second time
+				MediaScannerConnection.scanFile(this, new String[] { new File(newPath).getAbsolutePath() }, null, null);
 			} catch (Exception e) {
 				Toast toast = makeText(getApplicationContext(), "Caught error: " + e + " within second try", Toast.LENGTH_LONG); // Shows popup with error message
 				toast.show();
